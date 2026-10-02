@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XAUUSD — Análisis Diario AMT</title>
+<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+<style>
+ * { margin:0; padding:0; box-sizing:border-box; }
+ body { background:#131722; color:#d1d4dc; font-family:'Segoe UI',Segoe UI Emoji; padding:16px; }
+ .header { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+ .dot { width:10px; height:10px; border-radius:50%; background:#26a69a; animation:pulse 1.4s infinite; }
+ @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(38,166,154,.4);} 50%{box-shadow:0 0 0 8px rgba(38,166,154,0);} 100%{box-shadow:0 0 0 0 rgba(38,166,154,0);} }
+ h1 { font-size:18px; font-weight:600; }
+ .subtitle { color:#868993; font-size:12px; }
+ .price { font-size:22px; font-weight:700; color:#26a69a; margin-left:auto; }
+ /* Tabs */
+ .tabs { display:flex; gap:4px; margin-bottom:0; border-bottom:1px solid #2a2e39; }
+ .tab-btn { background:transparent; border:none; color:#868993; padding:12px 20px; font-size:14px; font-weight:600; cursor:pointer; border-bottom:3px solid transparent; transition:all .2s; }
+ .tab-btn:hover { color:#d1d4dc; }
+ .tab-btn.active { color:#d1d4dc; border-bottom-color:#2962ff; }
+ .tab-panel { display:none; padding:16px; background:#1e222d; border-radius:0 0 8px 8px; border:1px solid #2a2e39; border-top:none; min-height:520px; }
+ .tab-panel.active { display:block; }
+ .card { background:#262b36; border:1px solid #2a2e39; border-radius:8px; padding:12px; margin-bottom:10px; }
+ .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+ #chart { height:440px; width:100%; }
+ .legend-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+ .legend-item { display:flex; align-items:center; gap:6px; font-size:12px; padding:4px 10px; background:#2a2e39; border-radius:4px; }
+ .swatch { width:12px; height:12px; border-radius:2px; }
+ .table { width:100%; border-collapse:collapse; font-size:13px; }
+ .table th, .table td { padding:8px 10px; text-align:left; border-bottom:1px solid #2a2e39; }
+ .table th { color:#868993; font-weight:600; font-size:11px; text-transform:uppercase; }
+ .bull { color:#26a69a; } .bear { color:#f23645; } .neutral { color:#868993; }
+ .badge { display:inline-block; padding:2px 8px; border-radius:3px; font-size:11px; font-weight:700; }
+ .badge-buy { background:rgba(38,166,154,.2); color:#26a69a; }
+ .badge-sell { background:rgba(242,54,69,.2); color:#f23645; }
+ .badge-mixed { background:rgba(255,152,0,.15); color:#ff9800; }
+ .news-item { padding:8px 0; border-bottom:1px solid #2a2e39; font-size:13px; line-height:1.5; }
+ .news-item a { color:#6ca5ff; text-decoration:none; }
+ .news-time { color:#868993; font-size:11px; }
+ .footer { margin-top:8px; font-size:11px; color:#868993; text-align:right; }
+ h3 { font-size:14px; margin-bottom:8px; }
+ ul { margin-left:18px; font-size:13px; line-height:1.6; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="dot"></div>
+  <div>
+    <h1>XAUUSD — Análisis Diario (Viernes 2 Oct 2026)</h1>
+    <div class="subtitle">Día de NFP · Balance rotación · Sesgo intradía mixto</div>
+  </div>
+  <div class="price">4,186.9 <span style="font-size:13px;color:#26a69a">+0.23%</span></div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab(0)">📈 Gráfico &amp; Zonas AMT</button>
+  <button class="tab-btn" onclick="showTab(1)">📰 Sentimiento &amp; Noticias</button>
+  <button class="tab-btn" onclick="showTab(2)">🔧 Análisis Técnico</button>
+</div>
+
+<!-- ================= TAB 1: GRÁFICO ================= -->
+<div class="tab-panel active" id="tab0">
+  <div class="chart-wrap"><div id="chart"></div></div>
+  <div class="legend-row">
+    <div class="legend-item"><div class="swatch" style="background:#f23645"></div>PDH 4,219</div>
+    <div class="legend-item"><div class="swatch" style="background:#26a69a"></div>VAH 4,196</div>
+    <div class="legend-item"><div class="swatch" style="background:#ff9800"></div>POC 4,178 (ahora)</div>
+    <div class="legend-item"><div class="swatch" style="background:#26a69a;opacity:.6"></div>VAL 4,165</div>
+    <div class="legend-item"><div class="swatch" style="background:#2962ff"></div>PDL 4,133</div>
+  </div>
+
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <h3>🔴 Setup VENTA — ruptura de VAL (probabilidad alta)</h3>
+      <ul>
+        <li>Trigger: cierre 1H <b>&lt; 4,165</b></li>
+        <li>Entrada: 4,162 | Stop: 4,172 (sobre POC)</li>
+        <li>T1: 4,150 · T2: 4,133 (PDL) — R:R ≈ 1:2.9</li>
+        <li>Racional AMT: pérdida del borde inferior del valor con volumen = re-evaluation a la baja hacia liquidez en PDL</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🟢 Setup COMPRA — rebote en VAL (counter-trend)</h3>
+      <ul>
+        <li>Trigger: mecha de rechazo 15m en 4,165–4,168 con cierre &gt; 4,170</li>
+        <li>Entrada: 4,168 | Stop: 4,160 (bajo mecha)</li>
+        <li>T1: 4,178 (POC) · T2: 4,196 (VAH) — R:R ≈ 1:3.5</li>
+        <li>Racional AMT: balance → rotación POC↔VAH; trade de mean-reversion, no dejar correr</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <h3>📖 Teoría de Subastas (Dalton)</h3>
+    <ul>
+      <li><b>Apertura:</b> open dentro de valor (4,174), test al VAH (4,196) <b>rechazado</b> → Open Rejection-Reverse bajista</li>
+      <li><b>Estado:</b> Balance (rango 63 pts &lt; ATR 91) → rotación, no tendencia intradía</li>
+      <li><b>Aceptación/Rechazo:</b> mercado rechaza &gt;4,190 (caro); acepta 4,165–4,180 (justo)</li>
+      <li><b>Regla del 80%:</b> pendiente — si abre dentro, sale por un lado y re-entra, target el extremo opuesto del valor. Se vigila si rompe VAL y re-entra</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <h3>🧭 Qué hacer en cada rechazo — guía AMT</h3>
+    <table class="table">
+      <tr><th>Zona</th><th>Qué es</th><th>Qué debe pasar (aceptación sana)</th><th>Qué es un rechazo</th><th>Acción tras rechazo</th></tr>
+      <tr>
+        <td><b>VAH 4,196</b></td>
+        <td>Techo del Value Area — precio "caro" para la mayoría</td>
+        <td>Cierre 2 barras 15m &gt; VAH con volumen → rotación hacia PDH</td>
+        <td>Mecha superior &gt;30% cuerpo, cierre de vuelta bajo VAH, volumen seco</td>
+        <td><span class="badge badge-sell">VENDER</span> target POC 4,178 → VAL 4,165</td>
+      </tr>
+      <tr>
+        <td><b>VAL 4,165</b></td>
+        <td>Suelo del Value Area — precio "barato" para la mayoría</td>
+        <td>Cierre 2 barras 15m &lt; VAL con volumen → rotación hacia PDL</td>
+        <td>Mecha inferior larga, cierre de vuelta sobre VAL, volumen seco</td>
+        <td><span class="badge badge-buy">COMPRAR</span> target POC 4,178 → VAH 4,196</td>
+      </tr>
+      <tr>
+        <td><b>PDH 4,219</b></td>
+        <td>Máximo ayer — exceso superior anterior</td>
+        <td>Rupura limpia con volumen = día de tendencia alcista</td>
+        <td>Toque con reversión rápida = vendedores defendiendo el nivel</td>
+        <td><span class="badge badge-sell">VENDER</span> swing target POC; stop sobre mecha máxima</td>
+      </tr>
+      <tr>
+        <td><b>PDL 4,133</b></td>
+        <td>Mínimo ayer — exceso inferior anterior</td>
+        <td>Rupura limpia con volumen = día de tendencia bajista</td>
+        <td>Toque con reversión rápida = compradores defendiendo</td>
+        <td><span class="badge badge-buy">COMPRAR</span> target POC hoy; stop bajo mecha mínima</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:#868993;margin-top:8px">
+      <b>Regla rápida:</b> un rechazo solo cuenta si la vela vuelve al lado contrario del nivel. Un toque sin vuelta es testeo, no señal. Y si la vela cierra claramente más allá del nivel durante 2 barras con volumen, eso NO es rechazo: es aceptación, y el trade va a favor de la rotura (no contra).
+    </p>
+  </div>
+</div>
+
+<!-- ================= TAB 2: SENTIMIENTO ================= -->
+<div class="tab-panel" id="tab1">
+  <div class="card">
+    <h3>🧭 Sentimiento general</h3>
+    <p style="font-size:13px;line-height:1.6">
+      <span class="badge badge-mixed">MIXTO / CAUTELOSO</span>
+      Mercado posicionado a la espera del NFP. Tras el PCE suave del miércoles el bias es ligeramente dovish,
+      pero el ADP fuerte (90K vs 73K) y el PIB revisado al alza (2.2%) mantienen viva la opción de otra subida de la Fed.
+      FedWatch: probabilidad de subida el 28 oct ~<b>40%</b> (era 70% hace una semana).
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>🎯 Datos clave HOY — viernes 2 oct</h3>
+    <table class="table">
+      <tr><th>Hora ET</th><th>Evento</th><th>Esperado</th><th>Previo</th><th>Impacto oro</th></tr>
+      <tr><td>14:30 (8:30)</td><td><b>NFP septiembre</b></td><td>+100K</td><td>+162K</td><td><span class="bull">Alcista si &lt;70K</span> · <span class="bear">Bajista si &gt;140K</span></td></tr>
+      <tr><td>14:30</td><td>Tasa de paro</td><td>4.2%</td><td>4.1%</td><td>Alcista si ≥4.3%</td></tr>
+      <tr><td>14:30</td><td>Salarios m/m</td><td>+0.3%</td><td>—</td><td>Bajista si ≥0.4% (inflación)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>📰 Noticias y drivers</h3>
+    <div class="news-item"><b>NFP Preview:</b> consenso Reuters +100K (rango instituciones 90K). Un dato flojo desinfla las apuestas de subida Fed el 28 oct → oro sube.</div>
+    <div class="news-item"><b>Miércoles (PCE ago):</b> core 0.2% vs 0.3% esp. → mercado recortó probabilidad de subida octubre de 70% a &lt;40%. Motor del rebote actual.</div>
+    <div class="news-item"><b>Bonos:</b> yield 30Y en 5.62% (máximos 2002) — la presión estructural principal del oro sigue intacta.</div>
+    <div class="news-item"><b>Bancos centrales:</b> compras de oro siguen firmes (driver alcista de fondo; tesis Goldman de nuevos récords a 6-12m).</div>
+    <div class="news-item"><span class="news-time">⚠️ Sentimiento web (Marketaux) sin datos útiles para XAUUSD; este resumen viene de prensa financiera (Reuters, TradingKey, FXStreet, Danske).</span></div>
+  </div>
+
+  <div class="card">
+    <h3>⚖️ Confluencia técnico-sentimiento</h3>
+    <p style="font-size:13px">Recomendación del sistema: <span class="badge badge-mixed">MIXED</span> — el técnico dice SELL (estructura diaria bajista) pero el momentum gira a bullish y el sentimiento es neutral-a-la-espera. En días NFP manda el dato; la primera reacción (5–15 min) suele revertirse.</p>
+  </div>
+</div>
+
+<!-- ================= TAB 3: TÉCNICO ================= -->
+<div class="tab-panel" id="tab2">
+  <div class="card">
+    <h3>🔧 Panel técnico diario</h3>
+    <table class="table">
+      <tr><th>Indicador</th><th>Valor</th><th>Señal</th><th>Lectura</th></tr>
+      <tr><td>RSI(14)</td><td>41.0 ↑</td><td class="neutral">Neutral</td><td>Zona pullback 40–60; subiendo</td></tr>
+      <tr><td>MACD</td><td>-52.2 / hist -18.8</td><td class="bear">Bearish</td><td>Histograma contrayéndose (2º día) — vendedores pierden fuelle</td></tr>
+      <tr><td>Estocástico</td><td>21.0 / 18.1</td><td class="bull">Sobreventa saliendo</td><td>Primer cruce alcista en días</td></tr>
+      <tr><td>EMAs</td><td>—</td><td class="bear">Death Cross</td><td>EMA50 &lt; EMA200; precio bajo EMA20 (4,273)</td></tr>
+      <tr><td>Bollinger</td><td>4,120 / 4,459</td><td class="neutral">Mitad inferior</td><td>Sin squeeze; volatilidad media (ATR 91, 2.2%)</td></tr>
+      <tr><td>ADX</td><td>19.6</td><td class="neutral">Sin tendencia</td><td>-DI &gt; +DI pero fuerza débil</td></tr>
+      <tr><td>Vela diaria</td><td>—</td><td class="bull">Bullish débil</td><td>Mecha inferior 65% — rechazo claro de 4,134</td></tr>
+      <tr><td>OBV</td><td>—</td><td class="bull">Acumulación</td><td>Primer día de flujo comprador</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>📊 Multi-timeframe</h3>
+      <table class="table">
+        <tr><th>TF</th><th>Bias</th><th>Nota</th></tr>
+        <tr><td>1W</td><td class="bull">Bullish</td><td>Precio muy sobre EMA200; macro intacto</td></tr>
+        <tr><td>1D</td><td class="bear">Bearish</td><td>Único TF negativo; sesgo swing = vender rebotes</td></tr>
+        <tr><td>4H</td><td class="neutral">Neutral</td><td>MACD acaba de cruzar al alza</td></tr>
+        <tr><td>1H</td><td class="bull">Bullish</td><td>Precio &gt; EMA20 (4,172) — soporte dinámico</td></tr>
+        <tr><td>15m</td><td class="neutral">Neutral</td><td>RSI 51, sin señal neta</td></tr>
+      </table>
+      <p style="font-size:12px;color:#868993;margin-top:8px">Alignment: LEAN BULLISH intradía / SELL swing. Conflicto = operar solo en zonas AMT.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Niveles clave</h3>
+      <table class="table">
+        <tr><th>Nivel</th><th>Precio</th><th>Rol</th></tr>
+        <tr><td><b>Resistencia 1</b></td><td>4,196–4,200</td><td>VAH + techo 4H</td></tr>
+        <tr><td><b>Resistencia 2</b></td><td>4,225–4,237</td><td>EMA10 diaria — venta swing</td></tr>
+        <tr><td><b>Resistencia 3</b></td><td>4,273–4,290</td><td>EMA20 + pivote mensual</td></tr>
+        <tr><td><b>Soporte 1</b></td><td>4,165</td><td>VAL — el nivel del día</td></tr>
+        <tr><td><b>Soporte 2</b></td><td>4,134</td><td>Mínimo de hoy</td></tr>
+        <tr><td><b>Soporte 3</b></td><td>4,079</td><td>Suelo semanal (S1)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>✅ Plan del día</h3>
+    <ul>
+      <li><b>Hasta 14:30 ET:</b> lateral 4,165–4,196; rotación VAL↔VAH con stops cortos. No perseguir en POC (4,178).</li>
+      <li><b>NFP 14:30:</b> si &lt;70K → compra breakout 4,200 → target 4,237. Si &gt;140K → venta ruptura 4,165 → target 4,133.</li>
+      <li><b>Post-dato:</b> la dirección real se asienta en la vela de 15m tras las 14:45. Primera reacción = trampa habitual.</li>
+      <li><b>Invalidación total:</b> cierre diario &gt; 4,290 cambia el sesgo a alcista-corto-plazo; cierre &lt; 4,079 abre 4,009/3,860.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">Generado con Lightweight Charts™ (TradingView) · Datos OANDA + MCP TradingView · Última actualización ~15:55 CEST · Precio exacto OANDA: <b>4,186.9</b></div>
+
+<script>
+function showTab(n){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active', i===n));
+  document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active', i===n));
+  if(n===0 && window.__chart) window.__chart.timeScale().fitContent();
+}
+
+const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+  layout: { background:{ type: LightweightCharts.ColorType.Solid, color:'#1e222d' }, textColor:'#d1d4dc' },
+  grid: { vertLines:{ color:'#2a2e39' }, horzLines:{ color:'#2a2e39' } },
+  timeScale: { borderColor:'#2a2e39', timeVisible:true },
+  rightPriceScale: { borderColor:'#2a2e39' },
+  crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+});
+window.__chart = chart;
+
+// Velas 1h estimadas del día (recalculadas con precio actual 4,186.9 OANDA)
+const candles = [
+  { time:'2026-10-02 06:00', open:4175.97, high:4186.00, low:4133.72, close:4152.00 },
+  { time:'2026-10-02 07:00', open:4152.00, high:4188.50, low:4148.30, close:4185.20 },
+  { time:'2026-10-02 08:00', open:4185.20, high:4194.00, low:4170.10, close:4172.40 },
+  { time:'2026-10-02 09:00', open:4172.40, high:4196.90, low:4165.50, close:4186.00 },
+  { time:'2026-10-02 10:00', open:4186.00, high:4196.89, low:4172.00, close:4190.50 },
+  { time:'2026-10-02 11:00', open:4190.50, high:4196.00, low:4168.70, close:4186.90 },
+  { time:'2026-10-02 12:00', open:4186.90, high:4194.50, low:4175.00, close:4181.00 },
+  { time:'2026-10-02 13:00', open:4181.00, high:4189.20, low:4176.80, close:4186.89 },
+];
+const cs = chart.addCandlestickSeries({
+  upColor:'#26a69a', downColor:'#f23645', borderVisible:false,
+  wickUpColor:'#26a69a', wickDownColor:'#f23645'
+});
+cs.setData(candles);
+
+// Zonas AMT
+[
+  { price:4219, color:'#f23645', w:2, style:LightweightCharts.LineStyle.Dashed, title:'PDH' },
+  { price:4196, color:'#26a69a', w:2, style:LightweightCharts.LineStyle.Dashed, title:'VAH' },
+  { price:4178, color:'#ff9800', w:2, style:LightweightCharts.LineStyle.Solid,  title:'POC' },
+  { price:4165, color:'#26a69a', w:1, style:LightweightCharts.LineStyle.Dashed, title:'VAL' },
+  { price:4133, color:'#2962ff', w:2, style:LightweightCharts.LineStyle.Dashed, title:'PDL' },
+].forEach(z => cs.createPriceLine({ price:z.price, color:z.color, lineWidth:z.w, lineStyle:z.style, axisLabelVisible:true, title:z.title, lineVisible:true }));
+
+// Marcadores
+cs.setMarkers([
+  { time:'2026-10-02 06:00', position:'belowBar', color:'#26a69a', shape:'arrowUp',   text:'Rechazo PDL' },
+  { time:'2026-10-02 10:00', position:'aboveBar', color:'#f23645', shape:'arrowDown', text:'Rechazo VAH' },
+  { time:'2026-10-02 12:00', position:'belowBar', color:'#26a69a', shape:'arrowUp',   text:'Test VAL' },
+]);
+
+chart.timeScale().fitContent();
+</script>
+</body>
+</html>
