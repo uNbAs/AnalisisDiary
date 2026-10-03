@@ -103,19 +103,6 @@
 <!-- ================= TAB 2: SENTIMIENTO ================= -->
 <div class="tab-panel" id="tab1">
   <div class="card">
-    <h3><span class="es">🧭 Sentimiento de mercado</span><span class="en">🧭 Market sentiment</span></h3>
-    <table class="table">
-      <tr><th>Score</th><th>Label</th><th>Posts analizados</th><th>Bull / Bear / Neutral</th></tr>
-      <tr>
-        <td>0.514</td>
-        <td><span class="badge badge-buy">Strongly Bullish</span></td>
-        <td>3</td>
-        <td>3 / 0 / 0</td>
-      </tr>
-    </table>
-    <div style="font-size:12px;color:#868993;margin:6px 0"><span class="es">Divergencia clave: prensa alcista (Fed casi seguro en pausa tras NFP +29K) vs técnico intradía bajista. La narrativa alcista es de medio plazo; el flujo de precio corto plazo es vendedor.</span><span class="en">Key divergence: bullish press (Fed almost certainly on pause after +29K NFP) vs bearish intraday technicals. The bullish narrative is medium-term; short-term price flow is selling.</span></div>
-  </div>
-  <div class="card">
     <h3><span class="es">Posts / Titulares relevantes</span><span class="en">Relevant posts / headlines</span></h3>
     <div class="news-item"><a href="https://finance.yahoo.com/personal-finance/investing/article/gold-price-today-wednesday-september-23-2026-gold-holds-as-investors-weigh-china-iran-relations-110649042.html" target="_blank">Gold price today, Wednesday, September 23, 2026: Gold holds as investors weigh China, Iran relations</a>
     <div class="news-time">2026-09-23 — finance.yahoo.com · <span class="bull">bullish</span></div></div><div class="news-item"><a href="https://www.manilatimes.net/2026/09/22/tmt-newswire/globenewswire/midland-and-soquem-discover-new-copper-gold-and-silver-boulders-and-showings-on-nachicapau/2430223" target="_blank">Midland and SOQUEM Discover New Copper, Gold and Silver Boulders and Showings on Nachicapau</a>
@@ -180,51 +167,65 @@
   </div>
 
   <div class="card">
-    <h3><span class="es">🧭 Qué hacer en cada rechazo — guía AMT</span><span class="en">🧭 What to do at each rejection — AMT guide</span></h3>
-    <table class="table">
-      <tr class="es"><th>Zona</th><th>Qué es</th><th>Aceptación sana</th><th>Rechazo</th><th>Acción tras rechazo</th></tr><tr class="en"><th>Zone</th><th>What it is</th><th>Healthy acceptance</th><th>Rejection</th><th>Action after rejection</th></tr>
-      <tr class="es">
-        <td><b>4,171</b></td><td>EMA20 4H — primera resistencia dinámica seria</td>
-        <td>Cierre 2 barras 15m > 4,171 con volumen → anula sesgo vendedor</td>
-        <td>Mecha superior + cierre de vuelta bajo 4,160</td>
-        <td>VENDER target 4,133 → 4,100</td>
-      </tr>
-      <tr class="en">
-        <td><b>4,171</b></td><td>EMA20 4H — first serious dynamic resistance</td>
-        <td>2 15m bars close > 4,171 on volume → cancels sell bias</td>
-        <td>Upper wick + close back below 4,160</td>
-        <td>SELL target 4,133 → 4,100</td>
-      </tr>
-      <tr class="es">
-        <td><b>4,153–4,133</b></td><td>Exceso inferior viernes + PDL semanal</td>
-        <td>Cierre 2 barras 15m < 4,130 con volumen → rotación a 4,100</td>
-        <td>Mecha inferior larga, cierre sobre 4,145, volumen seco</td>
-        <td>COMPRAR target 4,162 → 4,171</td>
-      </tr>
-      <tr class="en">
-        <td><b>4,153–4,133</b></td><td>Friday's lower excess + weekly PDL</td>
-        <td>2 15m bars close < 4,130 on volume → rotation to 4,100</td>
-        <td>Long lower wick, close above 4,145, dry volume</td>
-        <td>BUY target 4,162 → 4,171</td>
-      </tr>
-      <tr class="es">
-        <td><b>4,196 (antiguo VAH)</b></td><td>Techo del valor de ayer — ahora resistencia de swing</td>
-        <td>Recuperación con aceptación = vuelta al balance alto</td>
-        <td>Toque con reversión rápida = vendedores defendiendo</td>
-        <td>VENDER swing target POC actual; stop sobre mecha</td>
-      </tr>
-      <tr class="en">
-        <td><b>4,196 (old VAH)</b></td><td>Yesterday's value high — now swing resistance</td>
-        <td>Recovery with acceptance = return to high balance</td>
-        <td>Touch with quick reversal = sellers defending</td>
-        <td>SELL swing target current POC; stop above wick</td>
-      </tr>
-    </table>
-    <div class="footer" style="text-align:center"><span class="es">Regla rápida: un rechazo solo cuenta si la vela vuelve al lado contrario del nivel. 2 barras cerrando más allá del nivel = aceptación, el trade va a favor de la rotura.</span><span class="en">Quick rule: a rejection only counts if the candle closes back on the opposite side of the level. 2 bars closing beyond the level = acceptance, and the trade goes with the breakout.</span></div>
-  </div>
+      <h3><span class="es">🧭 Qué hacer en cada rechazo — guía AMT</span><span class="en">🧭 What to do at each rejection — AMT guide</span></h3>
+      <table class="table">
+        <tr class="es"><th>Zona</th><th>Qué es</th><th>Aceptación sana</th><th>Rechazo</th><th>Acción tras rechazo</th></tr><tr class="en"><th>Zone</th><th>What it is</th><th>Healthy acceptance</th><th>Rejection</th><th>Action after rejection</th></tr>
+        <tr class="es">
+          <td><b>4,171</b></td><td>EMA20 4H — primera resistencia dinámica seria</td>
+          <td>Cierre 2 barras 15m > 4,171 con volumen → anula sesgo vendedor</td>
+          <td>Mecha superior + cierre de vuelta bajo 4,160</td>
+          <td>VENDER target 4,133 → 4,100</td>
+        </tr>
+        <tr class="en">
+          <td><b>4,171</b></td><td>EMA20 4H — first serious dynamic resistance</td>
+          <td>2 15m bars close > 4,171 on volume → cancels sell bias</td>
+          <td>Upper wick + close back below 4,160</td>
+          <td>SELL target 4,133 → 4,100</td>
+        </tr>
+        <tr class="es">
+          <td><b>4,153–4,133</b></td><td>Exceso inferior viernes + PDL semanal</td>
+          <td>Cierre 2 barras 15m < 4,130 con volumen → rotación a 4,100</td>
+          <td>Mecha inferior larga, cierre sobre 4,145, volumen seco</td>
+          <td>COMPRAR target 4,162 → 4,171</td>
+        </tr>
+        <tr class="en">
+          <td><b>4,153–4,133</b></td><td>Friday's lower excess + weekly PDL</td>
+          <td>2 15m bars close < 4,130 on volume → rotation to 4,100</td>
+          <td>Long lower wick, close above 4,145, dry volume</td>
+          <td>BUY target 4,162 → 4,171</td>
+        </tr>
+        <tr class="es">
+          <td><b>4,196 (antiguo VAH)</b></td><td>Techo del valor de ayer — ahora resistencia de swing</td>
+          <td>Recuperación con aceptación = vuelta al balance alto</td>
+          <td>Toque con reversión rápida = vendedores defendiendo</td>
+          <td>VENDER swing target POC actual; stop sobre mecha</td>
+        </tr>
+        <tr class="en">
+          <td><b>4,196 (old VAH)</b></td><td>Yesterday's value high — now swing resistance</td>
+          <td>Recovery with acceptance = return to high balance</td>
+          <td>Touch with quick reversal = sellers defending</td>
+          <td>SELL swing target current POC; stop above wick</td>
+        </tr>
+      </table>
+      <div class="footer" style="text-align:center"><span class="es">Regla rápida: un rechazo solo cuenta si la vela vuelve al lado contrario del nivel. 2 barras cerrando más allá del nivel = aceptación, el trade va a favor de la rotura.</span><span class="en">Quick rule: a rejection only counts if the candle closes back on the opposite side of the level. 2 bars closing beyond the level = acceptance, and the trade goes with the breakout.</span></div>
+    </div>
 
-  <div class="footer">Datos: TradingView / OANDA · Sentimiento: Marketaux · Actualizado 3 oct 2026 ~07:35 UTC</div>
-</div>
+    <div class="card">
+      <h3><span class="es">🧭 Sentimiento de mercado</span><span class="en">🧭 Market sentiment</span></h3>
+      <table class="table">
+        <tr><th>Score</th><th>Label</th><th>Posts analizados</th><th>Bull / Bear / Neutral</th></tr>
+        <tr>
+          <td>0.514</td>
+          <td><span class="badge badge-buy">Strongly Bullish</span></td>
+          <td>3</td>
+          <td>3 / 0 / 0</td>
+        </tr>
+      </table>
+      <div style="font-size:12px;color:#868993;margin:6px 0"><span class="es">Divergencia clave: prensa alcista (Fed casi seguro en pausa tras NFP +29K) vs técnico intradía bajista. La narrativa alcista es de medio plazo; el flujo de precio corto plazo es vendedor.</span><span class="en">Key divergence: bullish press (Fed almost certainly on pause after +29K NFP) vs bearish intraday technicals. The bullish narrative is medium-term; short-term price flow is selling.</span></div>
+    </div>
+
+    <div class="footer">Datos: TradingView / OANDA · Sentimiento: Marketaux · Actualizado 3 oct 2026 ~07:35 UTC</div>
+  </div>
 
 <script>
 function setLang(l){
