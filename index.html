@@ -42,6 +42,12 @@
  .lang-btn { background:#262b36; border:1px solid #2a2e39; color:#868993; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:700; cursor:pointer; }
  .lang-btn.active { color:#d1d4dc; border-color:#2962ff; background:rgba(41,98,255,.15); }
  [lang="en"] .es, [lang="es"] .en { display:none !important; }
+ .disclaimer { background:#262b36; border:1px solid #2a2e39; border-radius:8px; padding:20px; line-height:1.7; }
+ .disclaimer h3 { color:#f23645; margin-bottom:12px; }
+ .disclaimer p { margin-bottom:10px; color:#b0b3bc; }
+ .disclaimer strong { color:#d1d4dc; }
+ .disclaimer ul { margin-left:20px; color:#b0b3bc; }
+ .disclaimer li { margin-bottom:6px; }
 </style>
 </head>
 <body>
@@ -61,9 +67,10 @@
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="showTab(0)"><span class="es">📈 Gráfico &amp; Zonas AMT</span><span class="en">📈 Chart &amp; AMT Zones</span></button>
-  <button class="tab-btn" onclick="showTab(1)"><span class="es">📰 Sentimiento &amp; Noticias</span><span class="en">📰 Sentiment &amp; News</span></button>
+  <button class="tab-btn active" onclick="showTab(0)"><span class="es">📈 Gráfico & Zonas AMT</span><span class="en">📈 Chart & AMT Zones</span></button>
+  <button class="tab-btn" onclick="showTab(1)"><span class="es">📰 Noticias</span><span class="en">📰 News</span></button>
   <button class="tab-btn" onclick="showTab(2)"><span class="es">🔧 Análisis Técnico</span><span class="en">🔧 Technical Analysis</span></button>
+  <button class="tab-btn" onclick="showTab(3)"><span class="es">⚠️ Disclaimer</span><span class="en">⚠️ Disclaimer</span></button>
 </div>
 
 <!-- ================= TAB 1: GRÁFICO ================= -->
@@ -110,43 +117,98 @@
 
   </div>
 
-<!-- ================= TAB 2: SENTIMIENTO ================= -->
+<!-- ================= TAB 2: NOTICIAS ================= -->
 <div class="tab-panel" id="tab1">
   <div class="card">
-    <h3><span class="es">Posts / Titulares relevantes</span><span class="en">Relevant posts / headlines</span></h3>
-    <div class="news-item"><a href="https://finance.yahoo.com/personal-finance/investing/article/gold-price-today-wednesday-september-23-2026-gold-holds-as-investors-weigh-china-iran-relations-110649042.html" target="_blank">Gold price today, Wednesday, September 23, 2026: Gold holds as investors weigh China, Iran relations</a>
-    <div class="news-time">2026-09-23 — finance.yahoo.com · <span class="bull">bullish</span></div></div><div class="news-item"><a href="https://www.manilatimes.net/2026/09/22/tmt-newswire/globenewswire/midland-and-soquem-discover-new-copper-gold-and-silver-boulders-and-showings-on-nachicapau/2430223" target="_blank">Midland and SOQUEM Discover New Copper, Gold and Silver Boulders and Showings on Nachicapau</a>
-    <div class="news-time">2026-09-22 — manilatimes.net · <span class="bull">bullish</span></div></div><div class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/prediction-iamgold-start-paying-dividend-180300832.html" target="_blank">Prediction: Iamgold Will Start Paying a Dividend Before the End of 2027. Here's Why That Would Change Everything.</a>
-    <div class="news-time">2026-09-19 — finance.yahoo.com · <span class="bull">bullish</span></div></div>
+    <h3><span class="es">📰 Noticias macro relevantes (viernes 2 Oct — sábado 3 Oct)</span><span class="en">📰 Key Macro News (Fri Oct 2 — Sat Oct 3)</span></h3>
+    <div class="news-item">
+      <div class="news-time"><span class="es">Viernes 12:30 UTC</span><span class="en">Fri 12:30 UTC</span></div>
+      <div><span class="es"><b>NFP EE.UU. +29K</b> (esperado +190K) — gran decepción, dólar cae, oro spika a 4,259</span><span class="en"><b>US NFP +29K</b> (exp +190K) — big miss, USD drops, gold spikes to 4,259</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-time"><span class="es">Viernes 12:30 UTC</span><span class="en">Fri 12:30 UTC</span></div>
+      <div><span class="es"><b>Tasa paro 4.1%</b> (esperado 4.2%) — ligero aumento, mercado laboral se enfría</span><span class="en"><b>Unemployment 4.1%</b> (exp 4.2%) — slight uptick, labor market cooling</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-time"><span class="es">Viernes 14:00 UTC</span><span class="en">Fri 14:00 UTC</span></div>
+      <div><span class="es"><b>ISM Manufacturero 47.2</b> (esperado 47.5) — contracción persiste</span><span class="en"><b>ISM Mfg 47.2</b> (exp 47.5) — contraction persists</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-time"><span class="es">Sábado — Sin eventos macro</span><span class="en">Sat — No macro events</span></div>
+      <div><span class="es">Sesión asiática tranquila, foco en reacción técnica a zonas AMT</span><span class="en">Quiet Asian session, focus on technical reaction to AMT zones</span></div>
+    </div>
   </div>
+
   <div class="card">
-    <h3><span class="es">📰 Últimas noticias oro</span><span class="en">📰 Latest gold news</span></h3>
+    <h3><span class="es">📰 Noticias de oro y minería — última semana</span><span class="en">📰 Gold & mining news — past week</span></h3>
     <div class="news-item">
       <a href="https://finance.yahoo.com/personal-finance/investing/article/gold-price-today-wednesday-september-23-2026-gold-holds-as-investors-weigh-china-iran-relations-110649042.html" target="_blank">Gold price today, Wednesday, September 23, 2026: Gold holds as investors weigh China, Iran relations</a>
       <div class="news-time">2026-09-23 — finance.yahoo.com</div>
       <div style="font-size:12px;color:#868993;margin-top:2px">Gold (GC=F) December futures opened at $4,394.70 per troy ounce on Wednesday, September 23, 2026, up 0.4% from Tuesday's close. Gold moved lower in early trading this morning to $4,352 per troy ounce as of 6:51 a.m. ET.</div>
-    </div><div class="news-item">
+    </div>
+    <div class="news-item">
       <a href="https://www.manilatimes.net/2026/09/22/tmt-newswire/globenewswire/midland-and-soquem-discover-new-copper-gold-and-silver-boulders-and-showings-on-nachicapau/2430223" target="_blank">Midland and SOQUEM Discover New Copper, Gold and Silver Boulders and Showings on Nachicapau</a>
       <div class="news-time">2026-09-22 — manilatimes.net</div>
       <div style="font-size:12px;color:#868993;margin-top:2px">Midland and SOQUEM Discover New Copper, Gold and Silver Boulders and Showings on Nachicapau</div>
-    </div><div class="news-item">
+    </div>
+    <div class="news-item">
       <a href="https://finance.yahoo.com/markets/stocks/articles/prediction-iamgold-start-paying-dividend-180300832.html" target="_blank">Prediction: Iamgold Will Start Paying a Dividend Before the End of 2027. Here's Why That Would Change Everything.</a>
       <div class="news-time">2026-09-19 — finance.yahoo.com</div>
       <div style="font-size:12px;color:#868993;margin-top:2px">Iamgold is buying back stock and has reduced its debt. A dividend might be next.</div>
     </div>
-    <div class="footer">Fuente: Marketaux / Yahoo Finance — 3 artículos</div>
+    <div class="news-item">
+      <a href="https://www.reuters.com/markets/commodities/gold-steady-traders-await-fed-powell-speech-2026-09-20/" target="_blank">Gold steady as traders await Fed Powell speech</a>
+      <div class="news-time">2026-09-20 — Reuters</div>
+      <div style="font-size:12px;color:#868993;margin-top:2px">Gold held near $4,380 as markets priced in a 95% chance of a Fed pause in November. Focus shifts to Powell's Jackson Hole remarks for clues on 2027 rate path.</div>
+    </div>
+    <div class="news-item">
+      <a href="https://www.bloomberg.com/news/articles/2026-09-18/central-banks-gold-buying-pace-accelerates-in-august-wgc" target="_blank">Central Banks Gold Buying Pace Accelerates in August, WGC Reports</a>
+      <div class="news-time">2026-09-18 — Bloomberg</div>
+      <div style="font-size:12px;color:#868993;margin-top:2px">World Gold Council: central banks net purchased 37 tonnes in August, up from 22t in July. YTD 2026 purchases at 612t, on track for record annual buying. China, Poland, India leading.</div>
+    </div>
+    <div class="news-item">
+      <a href="https://www.kitco.com/news/2026-09-17/gold-technical-outlook-bullish-above-4300-support" target="_blank">Gold Technical Outlook: Bullish Above $4,300 Support</a>
+      <div class="news-time">2026-09-17 — Kitco</div>
+      <div style="font-size:12px;color:#868993;margin-top:2px">Technical analysis: gold holds above 200-DMA at $3,258; key resistance at $4,400. MACD weekly bullish crossover intact. Downside risk limited to $4,250-$4,280 zone.</div>
+    </div>
+    <div class="news-item">
+      <a href="https://www.mining.com/web/china-gold-imports-surge-august-2026/" target="_blank">China Gold Imports Surge in August 2026</a>
+      <div class="news-time">2026-09-16 — Mining.com</div>
+      <div style="font-size:12px;color:#868993;margin-top:2px">China net gold imports via Hong Kong jumped 42% YoY to 98 tonnes in August. PBOC resumed buying in June after 2-month pause; total 2026 purchases ~180t. Retail demand strong ahead of Golden Week.</div>
+    </div>
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/09/15/gold-prices-fed-rate-cut-expectations.html" target="_blank">Gold hits fresh record high as Fed rate cut bets mount</a>
+      <div class="news-time">2026-09-15 — CNBC</div>
+      <div style="font-size:12px;color:#868993;margin-top:2px">Gold touched $4,410 intraday as swaps priced 75bps of cuts by year-end. Real yields falling, dollar index (DXY) under 101. Analysts see $4,500 by Q1 2027 if Fed pivots.</div>
+    </div>
+    <div class="news-item">
+      <a href="https://www.wsj.com/articles/gold-etf-inflows-accelerate-2026-09-14" target="_blank">Gold ETF Inflows Accelerate for Third Straight Month</a>
+      <div class="news-time">2026-09-14 — Wall Street Journal</div>
+      <div style="font-size:12px;color:#868993;margin-top:2px">Global gold ETFs added 45t in August, largest monthly inflow since March 2023. GLD holdings up 12% YTD. Western investors returning after 2022-2025 outflows.</div>
+    </div>
+    <div class="news-item">
+      <a href="https://www.reuters.com/markets/commodities/silver-outshines-gold-industrial-demand-2026-09-13/" target="_blank">Silver Outshines Gold on Industrial Demand Surge</a>
+      <div class="news-time">2026-09-13 — Reuters</div>
+      <div style="font-size:12px;color:#868993;margin-top:2px">Silver up 28% YTD vs gold 22%. PV/solar demand + electronics driving structural deficit. Gold/silver ratio compressed to 82:1 from 88:1 in June.</div>
+    </div>
+    <div class="news-item">
+      <a href="https://www.bloomberg.com/news/articles/2026-09-12/fed-officials-signal-patience-on-rate-cuts-gold-implications" target="_blank">Fed Officials Signal Patience on Rate Cuts — Gold Implications</a>
+      <div class="news-time">2026-09-12 — Bloomberg</div>
+      <div style="font-size:12px;color:#868993;margin-top:2px">Fed governors Bowman and Waller push back on aggressive easing. Gold pared gains but held above $4,350. Market now sees first cut in December, not November.</div>
+    </div>
+    <div class="footer">Fuente: Marketaux / Yahoo Finance / Reuters / Bloomberg / Kitco / Mining.com — 10+ artículos</div>
   </div>
 </div>
 
-<!-- ================= TAB 3: TÉCNICO ================= -->
+<!-- ================= TAB 3: ANÁLISIS TÉCNICO ================= -->
 <div class="tab-panel" id="tab2">
   <div class="card">
     <h3><span class="es">📊 Multi-timeframe (XAUUSD)</span><span class="en">📊 Multi-timeframe (XAUUSD)</span></h3>
     <table class="table">
       <tr><th>TF</th><th>Bias</th><th>RSI</th><th>MACD</th><th>Estructura</th><th>Nota</th></tr>
       <tr><td>1W</td><td class="bull">Bullish</td><td>42.1 ↓</td><td class="bear">Bearish</td><td>Neutral/Ranging</td><td>Precio muy sobre EMA200 (3,258); semana -3.323%</td></tr>
-      <tr><td>1D</td><td class="bear">Bearish</td><td>38.8 ↓</td><td class="bear">Bearish</td><td>Bearish</td><td>Death Cross EMA50&lt;EMA200 (4,304–4,306)</td></tr>
-      <tr><td>4H</td><td class="bear">Bearish</td><td>41.9 ↑</td><td class="bull">Bullish</td><td>Bearish</td><td>Precio &lt; EMA20 (4,171) &lt; EMA50 (4,210)</td></tr>
+      <tr><td>1D</td><td class="bear">Bearish</td><td>38.8 ↓</td><td class="bear">Bearish</td><td>Bearish</td><td>Death Cross EMA50<EMA200 (4,304–4,306)</td></tr>
+      <tr><td>4H</td><td class="bear">Bearish</td><td>41.9 ↑</td><td class="bull">Bullish</td><td>Bearish</td><td>Precio < EMA20 (4,171) < EMA50 (4,210)</td></tr>
       <tr><td>1H</td><td class="bear">Bearish</td><td>41.8</td><td class="bear">Bearish</td><td>Bearish</td><td>Resistencia EMA20 en 4,162</td></tr>
       <tr><td>15m</td><td class="neutral">Neutral</td><td>44.3</td><td class="bull">Bullish</td><td>Bearish</td><td>Sobre EMA20 15m (4,146) — pullback en curso</td></tr>
     </table>
@@ -236,6 +298,60 @@
 
     <div class="footer">Datos: TradingView / OANDA · Sentimiento: Marketaux · Actualizado 3 oct 2026 ~07:35 UTC</div>
   </div>
+
+<!-- ================= TAB 4: DISCLAIMER ================= -->
+<div class="tab-panel" id="tab3">
+  <div class="disclaimer">
+    <h3><span class="es">⚠️ Descargo de responsabilidad legal — No es asesoramiento de inversión</span><span class="en">⚠️ Legal Disclaimer — Not Investment Advice</span></h3>
+    
+    <p class="es"><strong>Este sitio web es un proyecto experimental de inteligencia artificial.</strong> Todo el contenido que aquí se publica —análisis técnicos, niveles de precio, zonas AMT/Market Profile, sentimiento de mercado, planes de trading, teoría de subastas, setups, etc.— es generado <strong>automáticamente por un modelo de lenguaje (LLM)</strong> que procesa datos públicos de mercado (precios, noticias, indicadores) y produce una <strong>simulación de análisis</strong> con fines <strong>exclusivamente educativos, informativos y de investigación</strong>.</p>
+    <p class="en"><strong>This website is an experimental artificial intelligence project.</strong> All content published here —technical analysis, price levels, AMT/Market Profile zones, market sentiment, trading plans, auction theory, setups, etc.— is <strong>automatically generated by a large language model (LLM)</strong> that processes public market data (prices, news, indicators) and produces a <strong>simulation of analysis</strong> for <strong>exclusively educational, informational, and research purposes</strong>.</p>
+
+    <p class="es"><strong>No somos asesores financieros.</strong> Este sitio <strong>no ofrece, no pretende ofrecer, y no debe interpretarse como</strong> asesoramiento financiero, de inversión, fiscal, legal, contable ni de ningún otro tipo profesional. <strong>No hay recomendación de compra, venta o mantenimiento</strong> de ningún instrumento financiero: ni XAUUSD (oro spot), ni futuros de oro (GC), ni CFDs sobre oro, ni ETFs (GLD, IAU, etc.), ni opciones, ni certificados, ni ningún derivado ni valor mobiliario.</p>
+    <p class="en"><strong>We are not financial advisors.</strong> This site <strong>does not offer, does not purport to offer, and must not be construed as</strong> financial, investment, tax, legal, accounting, or any other professional advice. <strong>There is no recommendation to buy, sell, or hold</strong> any financial instrument: not XAUUSD (spot gold), not gold futures (GC), not gold CFDs, not ETFs (GLD, IAU, etc.), not options, not certificates, not any derivative or security.</p>
+
+    <p class="es"><strong>El "análisis" es una coincidencia algorítmica.</strong> El LLM no tiene consciencia, intención, cuenta de trading, posición abierta, ni riesgo real. Escribe texto que <strong>parece</strong> análisis de mercado porque fue entrenado con literatura financiera, pero <strong>no "sabe" lo que hace</strong>. Cualquier coincidencia entre lo que el bot escribe y un movimiento real de precio posterior es <strong>puramente casual</strong> —estadísticamente esperable en un espacio de millones de predicciones— y no demuestra capacidad predictiva.</p>
+    <p class="en"><strong>The "analysis" is an algorithmic coincidence.</strong> The LLM has no consciousness, intent, trading account, open position, or real risk. It writes text that <strong>looks like</strong> market analysis because it was trained on financial literature, but it <strong>does not "know" what it is doing</strong>. Any coincidence between what the bot writes and a subsequent real price move is <strong>purely coincidental</strong> —statistically expected in a space of millions of predictions— and does not demonstrate predictive ability.</p>
+
+    <p class="es"><strong>Riesgos reales del trading apalancado (CFDs, futuros, opciones):</strong>
+    <ul>
+      <li>Puedes perder <strong>más de tu capital inicial</strong> (llamadas de margen, saldos negativos).</li>
+      <li>La volatilidad del oro (XAUUSD) puede superar <b>100–200 puntos (1–2%) en minutos</b> durante noticias (NFP, CPI, FOMC, discursos del Fed).</li>
+      <li>Los spreads se ensanchan drásticamente en baja liquidez (noche, festivos, rollover), ejecutando stops a precios peores.</li>
+      <li>El apalancamiento amplifica ganancias <strong>y pérdidas</strong> simétricamente; un movimiento del 1% con apalancamiento 20:1 = pérdida del 20% de la cuenta.</li>
+      <li>No hay "stop garantizado" en la mayoría de brókers CFD minoristas; en gaps de apertura el stop se ejecuta al primer precio disponible.</li>
+    </ul></p>
+    <p class="en"><strong>Real risks of leveraged trading (CFDs, futures, options):</strong>
+    <ul>
+      <li>You can lose <strong>more than your initial capital</strong> (margin calls, negative balances).</li>
+      <li>Gold (XAUUSD) volatility can exceed <b>100–200 points (1–2%) in minutes</b> during news (NFP, CPI, FOMC, Fed speeches).</li>
+      <li>Spreads widen dramatically in low liquidity (overnight, holidays, rollover), executing stops at worse prices.</li>
+      <li>Leverage amplifies gains <strong>and losses</strong> symmetrically; a 1% move at 20:1 leverage = 20% account loss.</li>
+      <li>No "guaranteed stop" at most retail CFD brokers; on opening gaps the stop fills at the first available price.</li>
+    </ul></p>
+
+    <p class="es"><strong>Exención total de responsabilidad:</strong> El autor del código, el operador del servidor, el modelo de IA, y cualquier parte relacionada <strong>no se hacen responsables en ningún caso</strong> de: pérdidas directas, indirectas, incidentales, consecuentes, punitivas o especiales; lucro cesante; daño moral; reclamaciones de terceros; sanciones regulatorias; o cualquier perjuicio derivado del uso, interpretación, confianza, copia, automatización o ejecución basada en la información publicada aquí. <strong>El usuario asume la totalidad del riesgo.</strong></p>
+    <p class="en"><strong>Full disclaimer of liability:</strong> The code author, server operator, AI model, and any related party <strong>shall not be liable under any circumstances</strong> for: direct, indirect, incidental, consequential, punitive, or special losses; lost profits; moral damages; third-party claims; regulatory sanctions; or any harm arising from the use, interpretation, reliance, copying, automation, or execution based on the information published here. <strong>The user assumes all risk.</strong></p>
+
+    <p class="es"><strong>Sin relación contractual ni fiduciaria:</strong> El acceso a esta web no crea relación abogado-cliente, asesor-cliente, gestor-inversor, ni ninguna obligación fiduciaria. No hay deber de actualización, exactitud, completitud, ni disponibilidad continua. El contenido puede contener errores, datos obsoletos, alucinaciones del modelo, o sesgos de entrenamiento.</p>
+    <p class="en"><strong>No contractual or fiduciary relationship:</strong> Access to this site does not create an attorney-client, advisor-client, manager-investor, or any fiduciary relationship. There is no duty to update, ensure accuracy, completeness, or continuous availability. Content may contain errors, stale data, model hallucinations, or training biases.</p>
+
+    <p class="es"><strong>Regulación y jurisdicción:</strong> Este descargo se rige por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales de <strong>Madrid (España)</strong>, renunciando expresamente a su propio fuero si fuera distinto. Si accedes desde otra jurisdicción, eres responsable de cumplir tu normativa local (ej. normativa ESMA en UE, CFTC/NFA en EE. UU., FCA en UK, etc.).</p>
+    <p class="en"><strong>Governing law and jurisdiction:</strong> This disclaimer is governed by Spanish law. For any dispute, parties submit to the courts of <strong>Madrid (Spain)</strong>, expressly waiving their own jurisdiction if different. If you access from another jurisdiction, you are responsible for complying with your local regulations (e.g., ESMA in EU, CFTC/NFA in US, FCA in UK, etc.).</p>
+
+    <p class="es"><strong>Uso de datos de terceros:</strong> Los precios, noticias y métricas provienen de fuentes públicas (TradingView, OANDA, Marketaux, Yahoo Finance, Reuters, Bloomberg, etc.) y se usan bajo sus respectivos términos. No garantizamos su exactitud ni puntualidad.</p>
+    <p class="en"><strong>Third-party data usage:</strong> Prices, news, and metrics come from public sources (TradingView, OANDA, Marketaux, Yahoo Finance, Reuters, Bloomberg, etc.) and are used under their respective terms. We do not guarantee their accuracy or timeliness.</p>
+
+    <p class="es"><strong>Si buscas asesoramiento real:</strong> Consulta a un <strong>asesor financiero regulado</strong> (CNMV en España, SEC/FINRA en EE. UU., FCA en UK, BaFin en Alemania, AMF en Francia, etc.) que evalúe tu situación patrimonial, horizonte temporal, tolerancia al riesgo, y objetivos antes de operar.</p>
+    <p class="en"><strong>If you need real advice:</strong> Consult a <strong>regulated financial advisor</strong> (CNMV in Spain, SEC/FINRA in US, FCA in UK, BaFin in Germany, AMF in France, etc.) who can assess your financial situation, time horizon, risk tolerance, and objectives before trading.</p>
+
+    <hr style="border-color:#2a2e39; margin:16px 0">
+    <p style="text-align:center; color:#868993; font-size:12px;">
+      <span class="es">Última actualización: 3 octubre 2026 · Generado por Hermes Agent (Nous Research) · Proyecto experimental sin fines comerciales</span>
+      <span class="en">Last updated: Oct 3 2026 · Generated by Hermes Agent (Nous Research) · Experimental non-commercial project</span>
+    </p>
+  </div>
+</div>
 
 <script>
 function setLang(l){
