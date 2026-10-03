@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,12 @@
 <style>
  * { margin:0; padding:0; box-sizing:border-box; }
  body { background:#131722; color:#d1d4dc; font-family:'Segoe UI',Segoe UI Emoji; padding:16px; }
- .header { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+ .header { display:flex; align-items:center; flex-direction:column; text-align:center; gap:6px; margin-bottom:14px; position:relative; }
  .dot { width:10px; height:10px; border-radius:50%; background:#f23645; animation:pulse 1.4s infinite; }
  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(242,54,69,.4);} 50%{box-shadow:0 0 0 8px rgba(242,54,69,0);} 100%{box-shadow:0 0 0 0 rgba(242,54,69,0);} }
  h1 { font-size:18px; font-weight:600; }
  .subtitle { color:#868993; font-size:12px; }
- .price { font-size:22px; font-weight:700; color:#f23645; margin-left:auto; }
+ .price { font-size:22px; font-weight:700; color:#f23645; }
  /* Tabs */
  .tabs { display:flex; gap:4px; margin-bottom:0; border-bottom:1px solid #2a2e39; }
  .tab-btn { background:transparent; border:none; color:#868993; padding:12px 20px; font-size:14px; font-weight:600; cursor:pointer; border-bottom:3px solid transparent; transition:all .2s; }
@@ -38,68 +38,78 @@
  .footer { margin-top:8px; font-size:11px; color:#868993; text-align:right; }
  h3 { font-size:14px; margin-bottom:8px; }
  ul { margin-left:18px; font-size:13px; line-height:1.6; }
+ .lang-toggle { position:absolute; top:0; right:0; display:flex; gap:4px; }
+ .lang-btn { background:#262b36; border:1px solid #2a2e39; color:#868993; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:700; cursor:pointer; }
+ .lang-btn.active { color:#d1d4dc; border-color:#2962ff; background:rgba(41,98,255,.15); }
+ [lang="en"] .es, [lang="es"] .en { display:none !important; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="dot"></div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
   <div>
-    <h1>XAUUSD — Análisis Diario AMT (Sábado 3 Oct 2026)</h1>
-    <div class="subtitle">Regla del 80% fallida · Valor migrado a la baja · LEAN BEARISH · Sentimiento noticias: Strongly Bullish</div>
+    <h1 class="es">XAUUSD — Análisis Diario AMT (Sábado 3 Oct 2026)</h1>
+    <h1 class="en">XAUUSD — Daily AMT Analysis (Sat Oct 3 2026)</h1>
+    <div class="subtitle es">Regla del 80% fallida · Valor migrado a la baja · LEAN BEARISH · Sentimiento noticias: Strongly Bullish</div>
+    <div class="subtitle en">80% rule failed · Value migrating lower · LEAN BEARISH · News sentiment: Strongly Bullish</div>
   </div>
   <div class="price">4,142.7 <span style="font-size:13px;color:#f23645">-0.771%</span></div>
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="showTab(0)">📈 Gráfico &amp; Zonas AMT</button>
-  <button class="tab-btn" onclick="showTab(1)">📰 Sentimiento &amp; Noticias</button>
-  <button class="tab-btn" onclick="showTab(2)">🔧 Análisis Técnico</button>
+  <button class="tab-btn active" onclick="showTab(0)"><span class="es">📈 Gráfico &amp; Zonas AMT</span><span class="en">📈 Chart &amp; AMT Zones</span></button>
+  <button class="tab-btn" onclick="showTab(1)"><span class="es">📰 Sentimiento &amp; Noticias</span><span class="en">📰 Sentiment &amp; News</span></button>
+  <button class="tab-btn" onclick="showTab(2)"><span class="es">🔧 Análisis Técnico</span><span class="en">🔧 Technical Analysis</span></button>
 </div>
 
 <!-- ================= TAB 1: GRÁFICO ================= -->
 <div class="tab-panel active" id="tab0">
+
+  <div class="grid2">
+    <div class="card">
+      <h3><span class="es">🔴 Setup VENTA — pullback a EMA20 1H/4H (probabilidad alta)</span><span class="en">🔴 SELL Setup — pullback to 1H/4H EMA20 (high probability)</span></h3>
+      <ul>
+        <li class="es">Trigger: rechazo (mecha superior + cierre 15m bajo 4,160) en zona <b>4,160–4,171</b> (EMA20 1H 4,162 / EMA20 4H 4,171)</li><li class="en">Trigger: rejection (upper wick + 15m close below 4,160) in <b>4,160–4,171</b> zone (1H EMA20 4,162 / 4H EMA20 4,171)</li>
+        <li class="es">Entrada: 4,158 | Stop: 4,172 (sobre EMA20 4H)</li><li class="en">Entry: 4,158 | Stop: 4,172 (above 4H EMA20)</li>
+        <li>T1: 4,133 (PDL) · T2: 4,100 — R:R ≈ 1:3</li>
+        <li class="es">Racional AMT: Death Cross diario + alignment LEAN BEARISH (1D/4H/1H) → vender rallies, no perseguir mínimos</li><li class="en">AMT rationale: daily Death Cross + LEAN BEARISH alignment (1D/4H/1H) → sell rallies, do not chase lows</li>
+        <li class="es">Invalidación: cierre 1H &gt; 4,172 (anula el sesgo vendedor intradía)</li><li class="en">Invalidation: 1H close &gt; 4,172 (cancels intraday bearish bias)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="es">🟢 Setup COMPRA — reversión corta (counter-trend, solo con señal)</span><span class="en">🟢 BUY Setup — short reversal (counter-trend, only with signal)</span></h3>
+      <ul>
+        <li class="es">Trigger: cruce MACD alcista 4H ya activo + RSI 15m subiendo → mecha de rechazo 15m en <b>4,120–4,133</b> (PDL)</li><li class="en">Trigger: 4H bullish MACD cross already active + 15m RSI rising → 15m rejection wick in <b>4,120–4,133</b> (PDL)</li>
+        <li class="es">Entrada: 4,128 | Stop: 4,118 (bajo mecha)</li><li class="en">Entry: 4,128 | Stop: 4,118 (below wick)</li>
+        <li>T1: 4,146 (EMA20 15m) · T2: 4,162 (EMA20 1H) — R:R ≈ 1:2.5</li>
+        <li class="es">Racional AMT: tendencia débil ("Weak" en 1W/1D/1H) + MACD 4H/15m alcista = pullback técnico, no inversión</li><li class="en">AMT rationale: weak trend ("Weak" on 1W/1D/1H) + bullish 4H/15m MACD = technical pullback, not a reversal</li>
+        <li class="es">Tamaño reducido: es trade contra 3 TF bajistas alineados</li><li class="en">Reduced size: this trades against 3 aligned bearish timeframes</li>
+      </ul>
+    </div>
+  </div>
+
   <div class="card">
     <div id="chart"></div>
   </div>
 
-  <div class="grid2">
-    <div class="card">
-      <h3>🔴 Setup VENTA — pullback a EMA20 1H/4H (probabilidad alta)</h3>
-      <ul>
-        <li>Trigger: rechazo (mecha superior + cierre 15m bajo 4,160) en zona <b>4,160–4,171</b> (EMA20 1H 4,162 / EMA20 4H 4,171)</li>
-        <li>Entrada: 4,158 | Stop: 4,172 (sobre EMA20 4H)</li>
-        <li>T1: 4,133 (PDL) · T2: 4,100 — R:R ≈ 1:3</li>
-        <li>Racional AMT: Death Cross diario + alignment LEAN BEARISH (1D/4H/1H) → vender rallies, no perseguir mínimos</li>
-        <li>Invalidación: cierre 1H &gt; 4,172 (anula el sesgo vendedor intradía)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>🟢 Setup COMPRA — reversión corta (counter-trend, solo con señal)</h3>
-      <ul>
-        <li>Trigger: cruce MACD alcista 4H ya activo + RSI 15m subiendo → mecha de rechazo 15m en <b>4,120–4,133</b> (PDL)</li>
-        <li>Entrada: 4,128 | Stop: 4,118 (bajo mecha)</li>
-        <li>T1: 4,146 (EMA20 15m) · T2: 4,162 (EMA20 1H) — R:R ≈ 1:2.5</li>
-        <li>Racional AMT: tendencia débil ("Weak" en 1W/1D/1H) + MACD 4H/15m alcista = pullback técnico, no inversión</li>
-        <li>Tamaño reducido: es trade contra 3 TF bajistas alineados</li>
-      </ul>
-    </div>
-  </div>
-
   <div class="card">
-    <h3>📖 Teoría de Subastas (Dalton) — lectura post-NFP +1d</h3>
+    <h3><span class="es">📖 Teoría de Subastas (Dalton) — lectura post-NFP +1d</span><span class="en">📖 Auction Market Theory (Dalton) — post-NFP +1d read</span></h3>
     <ul>
-      <li><b>Apertura/Estado:</b> ayer el mercado testó VAH 4,196 tras el NFP +29K pero fracasó en el retorno → la sesión cerró perdiendo el POC (4,178). Hoy cotiza ≈4,143.</li>
-      <li><b>Regla del 80%:</b> <b>FALLIDA</b> — no hubo aceptación sostenida sobre el valor; el mercado volvió dentro y lo atravesó a la baja con volumen (vela 15:00 −33 pts).</li>
-      <li><b>Migración de valor:</b> nuevo valor en construcción ~4,130–4,165; la zona 4,165–4,178 (antiguo VAL/POC) es ahora resistencia (look below and fail).</li>
-      <li><b>Exceso inferior:</b> PDL 4,153 (15:00) defendido dos veces — base para T1 venta / triggers compra counter-trend.</li>
+      <li class="es"><b>Apertura/Estado:</b> ayer el mercado testó VAH 4,196 tras el NFP +29K pero fracasó en el retorno → la sesión cerró perdiendo el POC (4,178). Hoy cotiza ≈4,143.</li><li class="en"><b>Open/State:</b> yesterday the market tested VAH 4,196 after the +29K NFP but failed to hold → the session closed losing the POC (4,178). Today it trades ≈4,143.</li>
+      <li class="es"><b>Regla del 80%:</b> <b>FALLIDA</b> — no hubo aceptación sostenida sobre el valor; el mercado volvió dentro y lo atravesó a la baja con volumen (vela 15:00 −33 pts).</li><li class="en"><b>80% rule:</b> <b>FAILED</b> — no sustained acceptance above value; the market came back inside and broke through to the downside on volume (15:00 bar −33 pts).</li>
+      <li class="es"><b>Migración de valor:</b> nuevo valor en construcción ~4,130–4,165; la zona 4,165–4,178 (antiguo VAL/POC) es ahora resistencia (look below and fail).</li><li class="en"><b>Value migration:</b> new value building around 4,130–4,165; the 4,165–4,178 zone (old VAL/POC) is now resistance (look below and fail).</li>
+      <li class="es"><b>Exceso inferior:</b> PDL 4,153 (15:00) defendido dos veces — base para T1 venta / triggers compra counter-trend.</li><li class="en"><b>Lower excess:</b> PDL 4,153 (15:00) defended twice — base for the sell T1 / counter-trend buy triggers.</li>
     </ul>
   </div>
 
   <div class="card">
-    <h3>🧭 Qué hacer en cada rechazo — guía AMT</h3>
+    <h3><span class="es">🧭 Qué hacer en cada rechazo — guía AMT</span><span class="en">🧭 What to do at each rejection — AMT guide</span></h3>
     <table class="table">
-      <tr><th>Zona</th><th>Qué es</th><th>Aceptación sana</th><th>Rechazo</th><th>Acción tras rechazo</th></tr>
+      <tr class="es"><th>Zona</th><th>Qué es</th><th>Aceptación sana</th><th>Rechazo</th><th>Acción tras rechazo</th></tr><tr class="en"><th>Zone</th><th>What it is</th><th>Healthy acceptance</th><th>Rejection</th><th>Action after rejection</th></tr>
       <tr>
         <td><b>4,171</b></td><td>EMA20 4H — primera resistencia dinámica seria</td>
         <td>Cierre 2 barras 15m &gt; 4,171 con volumen → anula sesgo vendedor</td>
@@ -119,14 +129,14 @@
         <td>VENDER swing target POC actual; stop sobre mecha</td>
       </tr>
     </table>
-    <div class="footer">Regla rápida: un rechazo solo cuenta si la vela vuelve al lado contrario del nivel. 2 barras cerrando más allá del nivel = aceptación, el trade va a favor de la rotura.</div>
+    <div class="footer"><span class="es">Regla rápida: un rechazo solo cuenta si la vela vuelve al lado contrario del nivel. 2 barras cerrando más allá del nivel = aceptación, el trade va a favor de la rotura.</span><span class="en">Quick rule: a rejection only counts if the candle closes back on the opposite side of the level. 2 bars closing beyond the level = acceptance, and the trade goes with the breakout.</span></div>
   </div>
 </div>
 
 <!-- ================= TAB 2: SENTIMIENTO ================= -->
 <div class="tab-panel" id="tab1">
   <div class="card">
-    <h3>🧭 Sentimiento de mercado (Marketaux vía MCP)</h3>
+    <h3><span class="es">🧭 Sentimiento de mercado</span><span class="en">🧭 Market sentiment</span></h3>
     <table class="table">
       <tr><th>Score</th><th>Label</th><th>Posts analizados</th><th>Bull / Bear / Neutral</th></tr>
       <tr>
@@ -136,17 +146,17 @@
         <td>3 / 0 / 0</td>
       </tr>
     </table>
-    <div style="font-size:12px;color:#868993;margin:6px 0">Divergencia clave: prensa alcista (Fed casi seguro en pausa tras NFP +29K) vs técnico intradía bajista. La narrativa alcista es de medio plazo; el flujo de precio corto plazo es vendedor.</div>
+    <div style="font-size:12px;color:#868993;margin:6px 0"><span class="es">Divergencia clave: prensa alcista (Fed casi seguro en pausa tras NFP +29K) vs técnico intradía bajista. La narrativa alcista es de medio plazo; el flujo de precio corto plazo es vendedor.</span><span class="en">Key divergence: bullish press (Fed almost certainly on pause after +29K NFP) vs bearish intraday technicals. The bullish narrative is medium-term; short-term price flow is selling.</span></div>
   </div>
   <div class="card">
-    <h3>Posts / Titulares relevantes</h3>
+    <h3><span class="es">Posts / Titulares relevantes</span><span class="en">Relevant posts / headlines</span></h3>
     <div class="news-item"><a href="https://finance.yahoo.com/personal-finance/investing/article/gold-price-today-wednesday-september-23-2026-gold-holds-as-investors-weigh-china-iran-relations-110649042.html" target="_blank">Gold price today, Wednesday, September 23, 2026: Gold holds as investors weigh China, Iran relations</a>
     <div class="news-time">2026-09-23 — finance.yahoo.com · <span class="bull">bullish</span></div></div><div class="news-item"><a href="https://www.manilatimes.net/2026/09/22/tmt-newswire/globenewswire/midland-and-soquem-discover-new-copper-gold-and-silver-boulders-and-showings-on-nachicapau/2430223" target="_blank">Midland and SOQUEM Discover New Copper, Gold and Silver Boulders and Showings on Nachicapau</a>
     <div class="news-time">2026-09-22 — manilatimes.net · <span class="bull">bullish</span></div></div><div class="news-item"><a href="https://finance.yahoo.com/markets/stocks/articles/prediction-iamgold-start-paying-dividend-180300832.html" target="_blank">Prediction: Iamgold Will Start Paying a Dividend Before the End of 2027. Here's Why That Would Change Everything.</a>
     <div class="news-time">2026-09-19 — finance.yahoo.com · <span class="bull">bullish</span></div></div>
   </div>
   <div class="card">
-    <h3>📰 Últimas noticias oro (MCP financial_news)</h3>
+    <h3><span class="es">📰 Últimas noticias oro</span><span class="en">📰 Latest gold news</span></h3>
     <div class="news-item">
       <a href="https://finance.yahoo.com/personal-finance/investing/article/gold-price-today-wednesday-september-23-2026-gold-holds-as-investors-weigh-china-iran-relations-110649042.html" target="_blank">Gold price today, Wednesday, September 23, 2026: Gold holds as investors weigh China, Iran relations</a>
       <div class="news-time">2026-09-23 — finance.yahoo.com</div>
@@ -167,7 +177,7 @@
 <!-- ================= TAB 3: TÉCNICO ================= -->
 <div class="tab-panel" id="tab2">
   <div class="card">
-    <h3>📊 Multi-timeframe (MCP tradingview — OANDA:XAUUSD)</h3>
+    <h3><span class="es">📊 Multi-timeframe (XAUUSD)</span><span class="en">📊 Multi-timeframe (XAUUSD)</span></h3>
     <table class="table">
       <tr><th>TF</th><th>Bias</th><th>RSI</th><th>MACD</th><th>Estructura</th><th>Nota</th></tr>
       <tr><td>1W</td><td class="bull">Bullish</td><td>42.1 ↓</td><td class="bear">Bearish</td><td>Neutral/Ranging</td><td>Precio muy sobre EMA200 (3,258); semana -3.323%</td></tr>
@@ -180,7 +190,7 @@
   </div>
 
   <div class="card">
-    <h3>🎯 Niveles clave HOY — sábado 3 oct</h3>
+    <h3><span class="es">🎯 Niveles clave HOY — sábado 3 oct</span><span class="en">🎯 Key levels TODAY — Sat Oct 3</span></h3>
     <table class="table">
       <tr><th>Nivel</th><th>Precio</th><th>Rol</th></tr>
       <tr><td><b>Resistencia 1</b></td><td>4,162–4,171</td><td>EMA20 1H + EMA20 4H — zona de venta principal</td></tr>
@@ -193,21 +203,25 @@
   </div>
 
   <div class="card">
-    <h3>✅ Plan del día</h3>
+    <h3><span class="es">✅ Plan del día</span><span class="en">✅ Plan for the day</span></h3>
     <ul>
-      <li><b>Sesgo:</b> LEAN BEARISH (1D/4H/1H alineados) — solo ventas en pullbacks; compras solo counter-trend con tamaño reducido.</li>
-      <li><b>Zona de trabajo:</b> 4,133–4,171. Sobre 4,171 se anula el sesgo vendedor intradía; bajo 4,130 se acelera hacia 4,100/4,079.</li>
-      <li><b>Ventaja AMT:</b> vender rechazos en 4,160–4,171 (EMAs 1H/4H + antiguo POC/VAL). No perseguir en el PDL sin ruptura limpia con volumen.</li>
-      <li><b>Pullbacks:</b> el MACD alcista de 4H/15m puede producir rebotes a 4,162–4,171: son oportunidades de venta, no de compra, mientras el diario siga bajo 4,270 (EMA20 diaria).</li>
-      <li><b>Invalidación swing:</b> cierre diario &gt; 4,210 (EMA50 4H) neutraliza; cierre diario &lt; 4,079 abre 4,009 / 3,901 (mínimo 52 semanas).</li>
-      <li><b>Contexto macro:</b> sentimiento "Strongly Bullish" en noticias (Fed casi seguro en pausa) soporta el medio plazo — la corrección actual encaja como retroceso dentro de la estructura alcista semanal (precio muy sobre EMA200 semanal 3,258).</li>
+      <li class="es"><b>Sesgo:</b> LEAN BEARISH (1D/4H/1H alineados) — solo ventas en pullbacks; compras solo counter-trend con tamaño reducido.</li><li class="en"><b>Bias:</b> LEAN BEARISH (1D/4H/1H aligned) — sells on pullbacks only; buys only as counter-trend with reduced size.</li>
+      <li class="es"><b>Zona de trabajo:</b> 4,133–4,171. Sobre 4,171 se anula el sesgo vendedor intradía; bajo 4,130 se acelera hacia 4,100/4,079.</li><li class="en"><b>Working zone:</b> 4,133–4,171. Above 4,171 the intraday sell bias is cancelled; below 4,130 it accelerates toward 4,100/4,079.</li>
+      <li class="es"><b>Ventaja AMT:</b> vender rechazos en 4,160–4,171 (EMAs 1H/4H + antiguo POC/VAL). No perseguir en el PDL sin ruptura limpia con volumen.</li><li class="en"><b>AMT edge:</b> sell rejections in 4,160–4,171 (1H/4H EMAs + old POC/VAL). Do not chase at PDL without a clean breakdown on volume.</li>
+      <li class="es"><b>Pullbacks:</b> el MACD alcista de 4H/15m puede producir rebotes a 4,162–4,171: son oportunidades de venta, no de compra, mientras el diario siga bajo 4,270 (EMA20 diaria).</li><li class="en"><b>Pullbacks:</b> the bullish 4H/15m MACD can produce bounces to 4,162–4,171: those are selling opportunities, not buys, while the daily stays below 4,270 (daily EMA20).</li>
+      <li class="es"><b>Invalidación swing:</b> cierre diario &gt; 4,210 (EMA50 4H) neutraliza; cierre diario &lt; 4,079 abre 4,009 / 3,901 (mínimo 52 semanas).</li><li class="en"><b>Swing invalidation:</b> daily close &gt; 4,210 (4H EMA50) neutralizes; daily close &lt; 4,079 opens 4,009 / 3,901 (52-week low).</li>
+      <li class="es"><b>Contexto macro:</b> sentimiento "Strongly Bullish" en noticias (Fed casi seguro en pausa) soporta el medio plazo — la corrección actual encaja como retroceso dentro de la estructura alcista semanal (precio muy sobre EMA200 semanal 3,258).</li><li class="en"><b>Macro context:</b> "Strongly Bullish" news sentiment (Fed almost certainly on pause) supports the medium term — the current correction fits as a pullback within the bullish weekly structure (price well above the 3,258 weekly EMA200).</li>
     </ul>
   </div>
 
-  <div class="footer">Generado vía MCP tradingview (tradingview-mcp-server v0.8.1) · Datos OANDA/TradingView + Marketaux · 3 oct 2026 ~07:35 UTC</div>
+  <div class="footer">Datos: TradingView / OANDA · Sentimiento: Marketaux · Actualizado 3 oct 2026 ~07:35 UTC</div>
 </div>
 
 <script>
+function setLang(l){
+  document.getElementById('root').setAttribute('lang', l);
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === l.toUpperCase()));
+}
 function showTab(i) {
   document.querySelectorAll('.tab-btn').forEach((b,idx) => b.classList.toggle('active', idx===i));
   document.querySelectorAll('.tab-panel').forEach((p,idx) => p.classList.toggle('active', idx===i));
