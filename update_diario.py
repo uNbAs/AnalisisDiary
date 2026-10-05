@@ -41,13 +41,34 @@ async def tv_calls(calls, env=None):
     return out
 
 def marketaux_news(query, token, limit=8):
-    if not token:
-        return []
-    q = urllib.parse.urlencode({"api_token": token, "search": query, "language": "en",
-                                "limit": limit, "sort": "published_desc"})
+    if token:
+        q = urllib.parse.urlencode({"api_token": token, "search": query, "language": "en",
+                                    "limit": limit, "sort": "published_desc"})
+        try:
+            with urllib.request.urlopen(f"https://api.marketaux.com/v1/news/all?{q}", timeout=20) as r:
+                return json.loads(r.read())["data"]
+        except Exception:
+            pass
+    # fallback: Google News RSS
+    q = urllib.parse.urlencode({"q": query + " when:7d", "hl": "en-US", "gl": "US", "ceid": "US:en"})
     try:
-        with urllib.request.urlopen(f"https://api.marketaux.com/v1/news/all?{q}", timeout=20) as r:
-            return json.loads(r.read())["data"]
+        import xml.etree.ElementTree as ET
+        with urllib.request.urlopen(f"https://news.google.com/rss/search?{q}", timeout=20) as r:
+            root = ET.fromstring(r.read())
+        out = []
+        for it in root.iter("item"):
+            title = it.findtext("title") or ""
+            link = it.findtext("link") or "#"
+            pub = it.findtext("pubDate") or ""
+            if " - " in title:
+                title, src = title.rsplit(" - ", 1)
+            else:
+                src = "news.google.com"
+            out.append({"title": title.strip(), "url": link, "description": "",
+                        "published_at": pub, "source": src})
+            if len(out) >= limit:
+                break
+        return out
     except Exception:
         return []
 
@@ -64,15 +85,18 @@ def news_html(items, max_n=8):
     rows = []
     for it in items[:max_n]:
         title = it.get("title", "").strip()
-        url = it.get("url", "#")
-        src = urllib.parse.urlparse(url).netloc
-        date = (it.get("published_at") or "")[:10]
+        url = it.get("url", "#") or "#"
+        src = it.get("source") or urllib.parse.urlparse(url).netloc or "news"
+        if isinstance(src, dict):
+            src = src.get("domain") or "news"
+        date = (it.get("published_at") or "")[:16]
         desc = re.sub(r"\s+", " ", (it.get("description") or it.get("snippet") or ""))[:220]
+        desc_html = (f'\n      <div style="font-size:12px;color:#868993;margin-top:2px">{desc}</div>' if desc else "")
         rows.append(
             f'    <div class="news-item">\n'
             f'      <a href="{url}" target="_blank">{title}</a>\n'
-            f'      <div class="news-time">{date} — {src}</div>\n'
-            f'      <div style="font-size:12px;color:#868993;margin-top:2px">{desc}</div>\n'
+            f'      <div class="news-time">{date} — {src}</div>'
+            f'{desc_html}\n'
             f'    </div>\n')
     return "".join(rows)
 
