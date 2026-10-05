@@ -356,7 +356,9 @@ const chart = LightweightCharts.createChart(document.getElementById('chart'), {
 });
 const cs = chart.addCandlestickSeries({
   upColor:'#26a69a', downColor:'#f23645', borderVisible:false,
-  wickUpColor:'#26a69a', wickDownColor:'#f23645'
+  wickUpColor:'#26a69a', wickDownColor:'#f23645',
+  // Escala inicial: solo rango entre Low y High de la sesión actual
+  autoscaleInfoProvider: () => ({ priceRange: { minValue: 4150, maxValue: 4205 } })
 });
 cs.setData([
   { time:1790546400, open:4308.8, high:4310.0, low:4292.4, close:4294.2 },
@@ -502,12 +504,13 @@ cs.setData([
 
 // Marcadores
 cs.setMarkers([
-  { time:1790546400, position:'aboveBar', color:'#26a69a', shape:'circle',    text:'NFP +29K — spike 4,259' },
-  { time:1791193290, position:'belowBar', color:'#ff9800', shape:'circle',   text:'Último 4189.1' },
+  { time:1790942400, position:'aboveBar', color:'#26a69a', shape:'circle',    text:'NFP +29K — spike 4,259' },
+  { time:1791193290, position:'belowBar', color:'#ff9800', shape:'circle',   text:'Último 4189.1' }
 
 ]);
 
-chart.timeScale().fitContent();
+// Posicionar vista sobre la sesión actual (últimas ~24h) en lugar de toda la semana
+chart.timeScale().setVisibleLogicalRange({ from: 104, to: 130 });
 </script>
 </body>
 </html>
