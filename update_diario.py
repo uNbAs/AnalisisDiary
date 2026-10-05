@@ -17,16 +17,16 @@ VENV_PY = "/home/hermes/.hermes/tools/tradingview-mcp-venv/bin/python"
 ENVIRON_FILE = Path.home() / ".hermes" / "config.yaml"
 
 def get_marketaux_token():
-    txt = ENVIRON_FILE.read_text()
-    m = re.search(r"MARKETAUX_API_TOKEN[\"']?\s*[:=]\s*[\"']?([^\"'\n\s]+)", txt)
+    m = re.search(r"MARKETAUX_API_TOKEN[\"']?\s*:\s*[\"']?([^\"'\n\s]+)", ENVIRON_FILE.read_text())
     return m.group(1) if m else None
 
 # ---------- TradingView MCP over stdio ----------
-async def tv_calls(calls):
+async def tv_calls(calls, env=None):
     sys.path.insert(0, "/home/hermes/.hermes/tools/tradingview-mcp-venv/lib/python3.11/site-packages")
     from mcp import ClientSession, StdioServerParameters
     from mcp.client.stdio import stdio_client
-    srv = StdioServerParameters(command="/home/hermes/.hermes/tools/tradingview-mcp-venv/bin/tradingview-mcp", args=[])
+    srv = StdioServerParameters(command="/home/hermes/.hermes/tools/tradingview-mcp-venv/bin/tradingview-mcp",
+                                args=[], env=env or {})
     out = {}
     async with stdio_client(srv) as (r, w):
         async with ClientSession(r, w) as s:
@@ -83,24 +83,36 @@ def swap_block(html, marker_start, marker_end, new_content):
     return html[:i] + marker_start + new_content + html[j:]
 
 async def main():
+    token = get_marketaux_token()
+    env = {"MARKETAUX_API_TOKEN": token} if token else {}
     data = await tv_calls([
         ("combined_analysis", {"symbol": "GC=F", "options": {"include_news": True, "max_news_items": 5}}),
         ("multi_timeframe_analysis", {"symbol": "GC=F"}),
         ("market_snapshot", {}),
         ("bitcoin_market_pulse", {}),
         ("futures_category_snapshot", {"category": "metals"}),
-    ])
+    ], env=env)
     ca = data.get("combined_analysis", {})
     mta = data.get("multi_timeframe_analysis", {})
     snap = data.get("market_snapshot", {})
     pulse = data.get("bitcoin_market_pulse", {})
 
-    price = ca.get("market_data", {}).get("price") or pulse.get("gold", {}).get("price") or "—"
-    pct = ca.get("market_data", {}).get("change_percent")
-    sent = ca.get("news_analysis", {}) or {}
-    sent_lbl = sent.get("consensus_label", "Neutral")
+    # price: try pulse.gold, then spot market_snapshot commodities, then yahoo_price tool data embedded in combined
+    price = None
+    pct = None
+    g = pulse.get("gold") or {}
+    if isinstance(g, dict) and g.get("price"):
+        price = g["price"]; pct = g.get("change_24h") or g.get("change_percent")
+    if price is None:
+        for etf in snap.get("etfs", []):
+            if etf.get("symbol") == "GLD":
+                pct = etf.get("change_pct")
+    if price is None:
+        ws = pulse.get("weekly_summary") or {}
+        # last resort: keep existing DOM price
+    sent = ca.get("sentiment", {}) or {}
+    sent_lbl = sent.get("sentiment_label", "Neutral")
 
-    token = get_marketaux_token()
     gold_news = marketaux_news("gold OR bullion OR \"gold price\" OR XAUUSD", token, 10)
     geo_news = marketaux_news("geopolitics war central bank fed rate", token, 6)
     gs = sentiment_score(gold_news)
@@ -120,13 +132,14 @@ async def main():
     html = re.sub(r"(News sentiment: )[A-Za-z ]+", rf"\g<1>{sent_lbl}", html)
     # sentiment table score
     if sent:
-        sc = sent.get("avg_sentiment_score", gs)
+        sc = sent.get("sentiment_score", gs)
         html = re.sub(r"<td>0\.\d+</td>", f"<td>{sc:.3f}</td>", html, count=1)
         bull = sent.get("bullish_count", 0); bear = sent.get("bearish_count", 0)
-        neu = sent.get("neutral_count", 0); tot = sent.get("posts_analyzed", bull + bear + neu)
+        neu = sent.get("neutral_count", 0)
         html = re.sub(r"<td>\d+\s*/\s*\d+\s*/\s*\d+</td>", f"<td>{bull} / {bear} / {neu}</td>", html, count=1)
-        html = re.sub(r'<td><span class="badge badge-(buy|sell)">[A-Za-z ]+</span></td>',
-                      f'<td><span class="badge badge-{"buy" if "Bull" in sent_lbl else "sell"}">{sent_lbl}</span></td>',
+        cls = "buy" if "Bull" in sent_lbl else ("sell" if "Bear" in sent_lbl else "mixed")
+        html = re.sub(r'<td><span class="badge badge-(buy|sell|mixed)">[A-Za-z ]+</span></td>',
+                      f'<td><span class="badge badge-{cls}">{sent_lbl}</span></td>',
                       html, count=1)
     # replace gold news card content between its h3 and footer
     frag = news_html(gold_news + geo_news, 10)
