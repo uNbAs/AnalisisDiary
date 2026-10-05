@@ -509,8 +509,9 @@ cs.setMarkers([
 
 ]);
 
-// Posicionar vista sobre la sesión actual (últimas ~24h) en lugar de toda la semana
-chart.timeScale().setVisibleLogicalRange({ from: 104, to: 130 });
+// Posicionar vista sobre la sesión actual (últimas ~36h) con barras más finas
+chart.timeScale().setVisibleLogicalRange({ from: 92, to: 132 });
+chart.timeScale().applyOptions({ barSpacing: 14, rightOffset: 2 });
 </script>
 </body>
 </html>
