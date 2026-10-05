@@ -115,25 +115,31 @@ async def main():
         ("market_snapshot", {}),
         ("bitcoin_market_pulse", {}),
         ("futures_category_snapshot", {"category": "metals"}),
+        ("yahoo_price", {"symbol": "GC=F"}),
     ], env=env)
     ca = data.get("combined_analysis", {})
     mta = data.get("multi_timeframe_analysis", {})
     snap = data.get("market_snapshot", {})
     pulse = data.get("bitcoin_market_pulse", {})
 
-    # price: try pulse.gold, then spot market_snapshot commodities, then yahoo_price tool data embedded in combined
     price = None
     pct = None
     g = pulse.get("gold") or {}
     if isinstance(g, dict) and g.get("price"):
         price = g["price"]; pct = g.get("change_24h") or g.get("change_percent")
+    yp = data.get("yahoo_price") or {}
+    if price is None and isinstance(yp, dict) and yp.get("price"):
+        price = yp["price"]; pct = yp.get("change_percent")
     if price is None:
         for etf in snap.get("etfs", []):
             if etf.get("symbol") == "GLD":
                 pct = etf.get("change_pct")
+    if pct is None:
+        row = next((c for c in snap.get("commodities", []) if c.get("symbol") == "GLD"), None)
+        if row:
+            pct = row.get("change_pct")
     if price is None:
-        ws = pulse.get("weekly_summary") or {}
-        # last resort: keep existing DOM price
+        price = "—"
     sent = ca.get("sentiment", {}) or {}
     sent_lbl = sent.get("sentiment_label", "Neutral")
 
@@ -146,7 +152,7 @@ async def main():
     today = datetime.now(timezone.utc).strftime("%d %b %Y")
     # header price
     if isinstance(price, (int, float)):
-        dir_col = "#f23645" if (pct or -1) < 0 else "#26a69a"
+        dir_col = "#f23645" if (pct or 0) < 0 else "#26a69a"
         html = re.sub(
             r'<div class="price">.*?</div>',
             f'<div class="price">{price:,.1f} <span style="font-size:13px;color:{dir_col}">{(pct or 0):+.2f}%</span></div>',
