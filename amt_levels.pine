@@ -1,0 +1,154 @@
+//=5
+// ============================================================================
+//  XAUUSD AMT Levels — PDH/PDL · POC · VAH/VAL · Session High/Low
+//  Réplica de las líneas de la web AnalisisDiary para TradingView
+//  Autor: generado por Hermes
+// ============================================================================
+indicator("XAUUSD AMT Levels", overlay=true, max_lines_count=500, max_labels_count=500)
+
+// ---------------------- Inputs ----------------------
+grpGeneral  = "General"
+lookbackVA  = input.int(48,   "Barras para Value Area (1h)", group=grpGeneral, tooltip="Nº de barras históricas para calcular POC/VAH/VAL (por defecto 48 barras 1h = 2 días)")
+valPct      = input.float(70.0, "% Value Area", minval=50, maxval=90, step=1, group=grpGeneral)
+tickSize    = input.float(0.5, "Paso de redondeo (bins)", minval=0.1, step=0.1, group=grpGeneral, tooltip="Redondeo del precio para el histograma de tiempo-en-precio")
+showLabels  = input.bool(true, "Mostrar etiquetas", group=grpGeneral)
+
+grpColors = "Colores"
+colPDH   = input.color(color.new(color.red,    30), "PDH", group=grpColors)
+colVAH   = input.color(color.new(color.red,    55), "VAH", group=grpColors)
+colPOC   = input.color(color.new(color.orange,  0), "POC", group=grpColors)
+colVAL   = input.color(color.new(color.teal,   45), "VAL", group=grpColors)
+colPDL   = input.color(color.new(color.blue,   35), "PDL", group=grpColors)
+colSessH = input.color(color.new(color.gray,   30), "Session High", group=grpColors)
+colSessL = input.color(color.new(color.gray,   30), "Session Low",  group=grpColors)
+
+// ---------------------- Datos base ----------------------
+// PDH / PDL: máximo y mínimo del día anterior (sesión diaria)
+[pdh, pdl] = request.security(syminfo.tickerid, "D", [high[1], low[1]], lookahead=barmerge.lookahead_on)
+
+// Session High / Low: desde el inicio del día en curso
+newDay = ta.change(time("D")) != 0
+var float sessH = na
+var float sessL = na
+if newDay
+    sessH := high
+    sessL := low
+else
+    sessH := math.max(nz(sessH, high), high)
+    sessL := math.min(nz(sessL, low), low)
+
+// ---------------------- Value Area (POC / VAH / VAL) ----------------------
+// Histograma de "tiempo en precio" sobre las últimas N barras:
+// para cada barra usamos el precio típico (H+L+C)/3 redondeado al bin.
+typ = (high + low + close) / 3
+bin = math.round(typ / tickSize) * tickSize
+
+var map.new<float, int> hist = map.new<float, int>()
+if barstate.isconfirmed
+    int prev = hist.contains(bin) ? map.get(hist, bin) : 0
+    map.put(hist, bin, prev + 1)
+
+// Mantener solo las últimas `lookbackVA` barras registrando su bin
+var array<float> binsQueue = array.new<float>()
+if barstate.isconfirmed
+    array.push(binsQueue, bin)
+    if array.size(binsQueue) > lookbackVA
+        float old = array.shift(binsQueue)
+        // decrementar el contador del bin expirado (recomputamos histograma completo por simplicidad)
+        int c = hist.contains(old) ? map.get(hist, old) : 0
+        if c <= 1
+            map.remove(hist, old)
+        else
+            map.put(hist, old, c - 1)
+
+// Calcular POC, VAH, VAL al confirmar cada barra
+float poc = na
+float vah = na
+float val = na
+if barstate.islast and barstate.isconfirmed
+    // POC = bin con mayor recuento
+    int maxCount = 0
+    map_keys = map.keys(hist)
+    for k in map_keys
+        int cnt = map.get(hist, k)
+        if cnt > maxCount
+            maxCount := cnt
+            poc := k
+    // Value Area: expandir desde el POC acumulando los bins más poblados hasta cubrir valPct%
+    int total = 0
+    for k in map_keys
+        total += map.get(hist, k)
+    int target = math.round(total * valPct / 100)
+    // ordenar bins por conteo descendente
+    array<float> sortedBins = array.from(map_keys)
+    array.sort(sortedBins, order.descending)
+    // orden manual por conteo
+    array<float> keysByCount = array.new<float>()
+    array<int>    counts      = array.new<int>()
+    for k in map_keys
+        array.push(keysByCount, k)
+        array.push(counts, map.get(hist, k))
+    // bubble-sort desc por counts (pequeño, N <= ~100)
+    int n = array.size(keysByCount)
+    for i in 0 to n - 2
+        for j in 0 to n - 2 - i
+            if array.get(counts, j) < array.get(counts, j + 1)
+                array.swap(counts, j, j + 1)
+                array.swap(keysByCount, j, j + 1)
+    int covered = 0
+    float vMin = poc, vMax = poc
+    for i in 0 to array.size(keysByCount) - 1
+        float px = array.get(keysByCount, i)
+        covered += array.get(counts, i)
+        vMin := math.min(vMin, px)
+        vMax := math.max(vMax, px)
+        if covered >= target
+            break
+    vah := vMax
+    val := vMin
+
+// ---------------------- Dibujo ----------------------
+// Líneas horizontales al borde derecho
+// PDH
+var line lPDH = na
+line.delete(lPDH)
+lPDH := line.new(bar_index - 1, pdh, bar_index + 5, pdh, extend=extend.right, color=colPDH, style=line.style_dashed, width=2)
+// PDL
+var line lPDL = na
+line.delete(lPDL)
+lPDL := line.new(bar_index - 1, pdl, bar_index + 5, pdl, extend=extend.right, color=colPDL, style=line.style_dashed, width=2)
+// VAH
+var line lVAH = na
+line.delete(lVAH)
+if not na(vah)
+    lVAH := line.new(bar_index - 1, vah, bar_index + 5, vah, extend=extend.right, color=colVAH, style=line.style_dashed, width=2)
+// VAL
+var line lVAL = na
+line.delete(lVAL)
+if not na(val)
+    lVAL := line.new(bar_index - 1, val, bar_index + 5, val, extend=extend.right, color=colVAL, style=line.style_dashed, width=2)
+// POC
+var line lPOC = na
+line.delete(lPOC)
+if not na(poc)
+    lPOC := line.new(bar_index - 1, poc, bar_index + 5, poc, extend=extend.right, color=colPOC, style=line.style_solid, width=2)
+// Session High/Low
+var line lSH = na
+line.delete(lSH)
+lSH := line.new(bar_index - 1, sessH, bar_index + 5, sessH, extend=extend.right, color=colSessH, style=line.style_dotted, width=1)
+var line lSL = na
+line.delete(lSL)
+lSL := line.new(bar_index - 1, sessL, bar_index + 5, sessL, extend=extend.right, color=colSessL, style=line.style_dotted, width=1)
+
+// ---------------------- Etiquetas ----------------------
+if showLabels and barstate.islast
+    label.new(bar_index + 1, pdh,  "PDH " + str.tostring(pdh,  "#.#"),  style=label.style_label_left, color=color.new(colPDH, 80), textcolor=colPDH,  size=size.small)
+    label.new(bar_index + 1, pdl,  "PDL " + str.tostring(pdl,  "#.#"),  style=label.style_label_left, color=color.new(colPDL, 80), textcolor=colPDL,  size=size.small)
+    if not na(vah)
+        label.new(bar_index + 1, vah, "VAH " + str.tostring(vah, "#.#"), style=label.style_label_left, color=color.new(colVAH, 80), textcolor=colVAH, size=size.small)
+    if not na(val)
+        label.new(bar_index + 1, val, "VAL " + str.tostring(val, "#.#"), style=label.style_label_left, color=color.new(colVAL, 80), textcolor=colVAL, size=size.small)
+    if not na(poc)
+        label.new(bar_index + 1, poc, "POC " + str.tostring(poc, "#.#"), style=label.style_label_left, color=color.new(colPOC, 80), textcolor=colPOC, size=size.small)
+    label.new(bar_index + 1, sessH, "SessH " + str.tostring(sessH, "#.#"), style=label.style_label_left, color=color.new(colSessH, 80), textcolor=colSessH, size=size.tiny)
+    label.new(bar_index + 1, sessL, "SessL " + str.tostring(sessL, "#.#"), style=label.style_label_left, color=color.new(colSessL, 80), textcolor=colSessL, size=size.tiny)
