@@ -9,11 +9,11 @@
  * { margin:0; padding:0; box-sizing:border-box; }
  body { background:#131722; color:#d1d4dc; font-family:'Segoe UI',Segoe UI Emoji; padding:16px; }
  .header { display:flex; align-items:center; flex-direction:column; text-align:center; gap:6px; margin-bottom:14px; position:relative; }
- .dot { width:10px; height:10px; border-radius:50%; background:#f23645; animation:pulse 1.4s infinite; }
- @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(242,54,69,.4);} 50%{box-shadow:0 0 0 8px rgba(242,54,69,0);} 100%{box-shadow:0 0 0 0 rgba(242,54,69,0);} }
+ .dot { width:10px; height:10px; border-radius:50%; background:#26a69a; animation:pulse 1.4s infinite; }
+ @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(38,166,154,.4);} 50%{box-shadow:0 0 0 8px rgba(38,166,154,0);} 100%{box-shadow:0 0 0 0 rgba(38,166,154,0);} }
  h1 { font-size:18px; font-weight:600; }
  .subtitle { color:#868993; font-size:12px; }
- .price { font-size:22px; font-weight:700; color:#f23645; }
+ .price { font-size:22px; font-weight:700; color:#26a69a; }
  /* Tabs */
  .tabs { display:flex; gap:4px; margin-bottom:0; border-bottom:1px solid #2a2e39; }
  .tab-btn { background:transparent; border:none; color:#868993; padding:12px 20px; font-size:14px; font-weight:600; cursor:pointer; border-bottom:3px solid transparent; transition:all .2s; }
@@ -43,14 +43,14 @@
  .lang-btn.active { color:#d1d4dc; border-color:#2962ff; background:rgba(41,98,255,.15); }
  [lang="en"] .es, [lang="es"] .en { display:none !important; }
  .disclaimer { background:#262b36; border:1px solid #2a2e39; border-radius:8px; padding:20px; line-height:1.7; }
- .disclaimer h3 { color:#f23645; margin-bottom:12px; }
+ .disclaimer h3 { color:#26a69a; margin-bottom:12px; }
  .disclaimer p { margin-bottom:10px; color:#b0b3bc; }
  .disclaimer strong { color:#d1d4dc; }
  .disclaimer ul { margin-left:20px; color:#b0b3bc; }
  .disclaimer li { margin-bottom:6px; }
  .veredicto { display:inline-block; padding:6px 16px; border-radius:4px; font-size:13px; font-weight:800; margin-top:8px; }
- .veredicto-bearish { background:rgba(242,54,69,.2); color:#f23645; border:1px solid #f23645; }
  .veredicto-bullish { background:rgba(38,166,154,.2); color:#26a69a; border:1px solid #26a69a; }
+ .veredicto-bearish { background:rgba(242,54,69,.2); color:#f23645; border:1px solid #f23645; }
  .veredicto-neutral { background:rgba(255,152,0,.15); color:#ff9800; border:1px solid #ff9800; }
 </style>
 </head>
@@ -64,17 +64,17 @@
   <div>
     <h1 class="es">XAUUSD — Análisis Diario AMT (Martes 3 Nov 2026)</h1>
     <h1 class="en">XAUUSD — Daily AMT Analysis (Tue Nov 3 2026)</h1>
-    <div class="subtitle es">Trend: LEAN BEARISH | POC ~3,991 | Sentimiento: Neutral | 📰 FOMC HOY — Día de decisión</div>
-    <div class="subtitle en">Trend: LEAN BEARISH | POC ~3,991 | Sentiment: Neutral | 📰 FOMC TODAY — Decision day</div>
+    <div class="subtitle es">Trend: LEAN BULLISH | POC ~3,991 | Sentimiento: Neutral | 📰 FOMC HOY — Día de decisión</div>
+    <div class="subtitle en">Trend: LEAN BULLISH | POC ~3,991 | Sentiment: Neutral | 📰 FOMC TODAY — Decision day</div>
   </div>
-  <div class="es">Precio: 3,914.6 (Futuros GC1! @ 06:54 UTC) | Spot CFD: ~3,895 — Spread ~20 puntos</div>
-  <div class="en">Price: 3,914.6 (Futures GC1! @ 06:54 UTC) | Spot CFD: ~3,895 — Spread ~20 points</div>
+  <div class="es">Precio: 4,124.6 (Futuros GC1! @ TradingView MCP) | Spot CFD: ~4,105 — Spread ~20 puntos</div>
+  <div class="en">Price: 4,124.6 (Futures GC1! @ TradingView MCP) | Spot CFD: ~4,105 — Spread ~20 points</div>
   <div class="price" style="line-height:1.1">
-    <span>3,914.6</span>
-    <span style="font-size:11px;color:#f23645; font-weight:400; margin-left:4px">-0.80% (FUTUROS)</span>
+    <span>4,124.6</span>
+    <span style="font-size:11px;color:#26a69a; font-weight:400; margin-left:4px">+1.59% (FUTUROS)</span>
   </div>
-  <div class="subtitle es" style="font-size:11px; margin-top:4px">Futuros GC1!: 3,914.6 · Spot CFD (tu bróker): ~3,895 · Spread ~20 pts</div>
-  <div class="subtitle en" style="font-size:11px; margin-top:4px">Futures GC1!: 3,914.6 · Spot CFD (your broker): ~3,895 · Spread ~20 pts</div>
+  <div class="subtitle es" style="font-size:11px; margin-top:4px">Futuros GC1!: 4,124.6 · Spot CFD (tu bróker): ~4,105 · Spread ~20 pts</div>
+  <div class="subtitle en" style="font-size:11px; margin-top:4px">Futures GC1!: 4,124.6 · Spot CFD (your broker): ~4,105 · Spread ~20 pts</div>
 </div>
 
 <div class="tabs">
@@ -90,19 +90,19 @@
 
   <div class="grid2">
       <div class="card">
+        <h3><span class="es">🟢 Posible COMPRA — rechazo en el suelo del valor (VAL / S1)</span><span class="en">🟢 Possible BUY — rejection at value bottom (VAL / S1)</span></h3>
+        <ul>
+          <li class="es">📍 <b>Si el precio baja hasta 3,754 (VAL/S1) y rebota arriba sin romperlo</b> → se puede comprar. Objetivo: volver al centro, hacia el POC ~3,991 y continuar hacia VAH 4,112.</li><li class="en">📍 <b>If price drops to 3,754 (VAL/S1) and bounces up without breaking it</b> → a buy can be considered. Target: back to the middle, toward POC ~3,991 and then VAH 4,112.</li>
+          <li class="es">📍 <b>Si el precio se mantiene sobre VAH 4,112 con aceptación (2 velas 15m cierrando arriba)</b> → continuación alcista hacia R2 4,349.</li><li class="en">📍 <b>If price holds above VAH 4,112 with acceptance (2 15m bars closing above)</b> → continuation bullish toward R2 4,349.</li>
+          <li class="es">🛑 <b>No comprar si el precio cierra dos velas de 15 min por debajo de VAL.</b> Eso es aceptación a la baja: puede seguir cayendo.</li><li class="en">🛑 <b>Do not buy if price closes two 15-min bars below VAL.</b> That's downside acceptance: it can keep falling.</li>
+        </ul>
+      </div>
+      <div class="card">
         <h3><span class="es">🔴 Posible VENTA — rechazo en el techo del valor (VAH / R1)</span><span class="en">🔴 Possible SELL — rejection at value top (VAH / R1)</span></h3>
         <ul>
           <li class="es">📍 <b>Si el precio sube hasta 4,112 (VAH/R1) y pone una mecha hacia abajo sin superarla</b> → se puede vender. Objetivo: volver al centro, hacia el POC ~3,991.</li><li class="en">📍 <b>If price rises to 4,112 (VAH/R1) and prints a downward wick without breaking above</b> → a sell can be considered. Target: back to the middle, toward POC ~3,991.</li>
           <li class="es">📍 <b>Señal más fuerte si llega a 4,349 (R2, techo previo) y rebota abajo</b> → venta con stop justo sobre el máximo de la mecha.</li><li class="en">📍 <b>Stronger signal if it reaches 4,349 (R2, previous top) and bounces down</b> → sell with stop just above the wick's high.</li>
           <li class="es">🛑 <b>No vender si el precio cierra dos velas de 15 min por encima de la zona.</b> Eso es aceptación: el mercado quiere seguir subiendo.</li><li class="en">🛑 <b>Do not sell if price closes two 15-min bars above the zone.</b> That's acceptance: the market wants to go higher.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3><span class="es">🟢 Posible COMPRA — rechazo en el suelo del valor (VAL / S1)</span><span class="en">🟢 Possible BUY — rejection at value bottom (VAL / S1)</span></h3>
-        <ul>
-          <li class="es">📍 <b>Si el precio baja hasta 3,754 (VAL/S1) y rebota arriba sin romperlo</b> → se puede comprar. Objetivo: volver al centro, hacia el POC ~3,991.</li><li class="en">📍 <b>If price drops to 3,754 (VAL/S1) and bounces up without breaking it</b> → a buy can be considered. Target: back to the middle, toward POC ~3,991.</li>
-          <li class="es">📍 <b>Señal más fuerte si llega a 3,633 (S2, soporte previo) y deja mecha larga inferior</b> → compra con stop bajo la mecha.</li><li class="en">📍 <b>Stronger signal if it reaches 3,633 (S2, previous support) with long lower wick</b> → buy with stop below the wick.</li>
-          <li class="es">🛑 <b>No comprar si el precio cierra dos velas de 15 min por debajo de VAL.</b> Eso es aceptación a la baja: puede seguir cayendo.</li><li class="en">🛑 <b>Do not buy if price closes two 15-min bars below VAL.</b> That's downside acceptance: it can keep falling.</li>
         </ul>
       </div>
     </div>
@@ -114,20 +114,20 @@
   <div class="card">
       <h3><span class="es">📋 Plan del día (Teoría de Subastas + FOMC)</span><span class="en">📋 Plan for the day (Auction Theory + FOMC)</span></h3>
       <ul>
-        <li class="es"><b>Dónde está el mercado:</b> el precio cotiza dentro del Área de Valor (<b>VAL ~3,754 — VAH ~4,112</b>), en la mitad inferior, cerca de S1 (3,754). El <b>POC ~3,991</b> es el precio "justo" donde más se ha negociado. Esto es <b>balance</b> con sesgo técnico bajista previo al FOMC.</li><li class="en"><b>Where the market is:</b> price inside Value Area (<b>VAL ~3,754 — VAH ~4,112</b>), lower half, near S1 (3,754). <b>POC ~3,991</b> is the "fair price" where most trading happened. This is <b>balance</b> with technical bearish bias ahead of FOMC.</li>
-        <li class="es"><b>Qué hacer en balance:</b> comportamiento típico es <b>rotación</b> — el precio viaja de un borde al otro (VAL ↔ POC ↔ VAH). La jugada base: esperar en los bordes, no perseguir en el centro. Hoy el FOMC puede romper el balance con aceptación real.</li><li class="en"><b>What to do in balance:</b> typical behavior is <b>rotation</b> — price travels edge to edge (VAL ↔ POC ↔ VAH). Base play: wait at the edges, don't chase in the middle. Today FOMC can break the balance with real acceptance.</li>
-        <li class="es"><b>Nivel clave arriba:</b> <b>VAH ~4,112</b> (R1), y más fuerte <b>R2 4,349</b> (techo previo). Rechazo ahí = posible venta hacia POC ~3,991.</li><li class="en"><b>Key level up:</b> <b>VAH ~4,112</b> (R1), and stronger <b>R2 4,349</b> (previous top). Rejection there = possible sell toward POC ~3,991.</li>
-        <li class="es"><b>Nivel clave abajo:</b> <b>VAL ~3,754</b> (coincide S1) y <b>S2 3,633</b> (soporte previo). Rechazo con mecha = compra hacia POC ~3,991.</li><li class="en"><b>Key level down:</b> <b>VAL ~3,754</b> (confluence S1) and <b>S2 3,633</b> (previous support). Rejection w/ wick = buy toward POC ~3,991.</li>
-        <li class="es"><b>Ruptura con aceptación (2 velas 15m cerrando fuera):</b> si rompe <b>4,112 arriba</b> → precio busca siguiente balance alto (R2 4,349); si rompe <b>3,754 abajo</b> → busca siguiente balance bajo (S2 3,633). En ese caso <b>no fades</b>: el trade va a favor de la rotura.</li><li class="en"><b>Breakout with acceptance (2 15m bars closing outside):</b> break <b>4,112 up</b> → price seeks higher balance (R2 4,349); break <b>3,754 down</b> → seeks lower balance (S2 3,633). In that case <b>don't fade</b>: the trade goes with the breakout.</li>
-        <li class="es"><b>Impacto FOMC:</b> el FOMC de hoy es el catalizador principal. Si la Fed es halcón (tasas altas o sin recortes) → dólar fuerte, oro baja → test de VAL/PDL. Si la Fed es paloma (recortes o pausa dovish) → dólar débil, oro sube → test de VAH/POC.</li><li class="en"><b>FOMC Impact:</b> Today's FOMC is the main catalyst. If Fed is hawkish (high rates or no cuts) → USD strong, gold down → test VAL/PDL. If Fed is dovish (cuts or dovish pause) → USD weak, gold up → test VAH/POC.</li>
-        <li class="es"><b>Gestión sencilla:</b> stop justo detrás de la mecha de rechazo; primer objetivo el POC (centro del balance); riesgo vs beneficio mínimo 1:2.</li><li class="en"><b>Simple management:</b> stop just behind the rejection wick; first target the POC (center of balance); minimum 1:2 risk-reward.</li>
+        <li class="es"><b>Dónde está el mercado:</b> el precio cotiza <b>por encima del VAH 4,112</b>, dentro del Área de Valor (<b>VAL 3,754 — VAH 4,112</b>) pero ya probando el techo. El <b>POC ~3,991</b> es el precio "justo" donde más se ha negociado. El mercado ha roto el sesgo bajista previo y ahora busca continuidad.</li><li class="en"><b>Where the market is:</b> price is trading <b>above VAH 4,112</b>, inside the Value Area (<b>VAL 3,754 — VAH 4,112</b>) but testing the top. <b>POC ~3,991</b> is the "fair price" where most trading happened. The market has broken the previous bearish bias and now seeks continuity.</li>
+        <li class="es"><b>Qué hacer en este entorno:</b> el comportamiento típico tras romper VAH es <b>extensión de rango</b> — el precio busca el siguiente balance alto. La jugada base: comprar en pullbacks hacia VAL/POC, no perseguir en el extremo si ya hay aceptación arriba. Hoy el FOMC puede acelerar o revertir el movimiento.</li><li class="en"><b>What to do in this environment:</b> typical behavior after breaking VAH is <b>range extension</b> — price seeks the next higher balance. Base play: buy pullbacks toward VAL/POC, don't chase at the extreme if there's already acceptance above. Today FOMC can accelerate or reverse the move.</li>
+        <li class="es"><b>Nivel clave arriba:</b> <b>VAH 4,112</b> ya probado. Más fuerte <b>R2 4,349</b> (techo previo). Si rompe con aceptación → objetivo 4,349 → 4,706 (R3).</li><li class="en"><b>Key level up:</b> <b>VAH 4,112</b> already tested. Stronger <b>R2 4,349</b> (previous top). If breaks with acceptance → target 4,349 → 4,706 (R3).</li>
+        <li class="es"><b>Nivel clave abajo:</b> <b>VAL 3,754</b> (suelo Value Area) y <b>POC 3,991</b>. Rechazo en POC con mecha = compra hacia VAH. Si pierde POC con aceptación → prueba VAL.</li><li class="en"><b>Key level down:</b> <b>VAL 3,754</b> (Value Area floor) and <b>POC 3,991</b>. Rejection at POC with wick = buy toward VAH. If loses POC with acceptance → test VAL.</li>
+        <li class="es"><b>Ruptura con aceptación (2 velas 15m cerrando fuera):</b> si rompe <b>4,112 arriba</b> → precio busca siguiente balance alto (4,349); si pierde <b>3,991 abajo</b> con aceptación → busca VAL 3,754. En ese caso <b>no fades</b>: el trade va a favor de la rotura.</li><li class="en"><b>Breakout with acceptance (2 15m bars closing outside):</b> break <b>4,112 up</b> → price seeks higher balance (4,349); lose <b>3,991 down</b> with acceptance → seeks VAL 3,754. In that case <b>don't fade</b>: the trade goes with the breakout.</li>
+        <li class="es"><b>Impacto FOMC:</b> el FOMC de hoy es el catalizador principal. Si la Fed es paloma (recortes o pausa dovish) → dólar débil, oro sube → continuación hacia 4,349. Si la Fed es halcón (tasas altas o sin recortes) → dólar fuerte, oro baja → reversión hacia POC/VAL.</li><li class="en"><b>FOMC Impact:</b> Today's FOMC is the main catalyst. If Fed is dovish (cuts or dovish pause) → USD weak, gold up → continuation toward 4,349. If Fed is hawkish (high rates or no cuts) → USD strong, gold down → reversal toward POC/VAL.</li>
+        <li class="es"><b>Gestión sencilla:</b> stop justo detrás de la mecha de rechazo; primer objetivo el POC o VAH según dirección; riesgo vs beneficio mínimo 1:2.</li><li class="en"><b>Simple management:</b> stop just behind the rejection wick; first target POC or VAH depending on direction; minimum 1:2 risk-reward.</li>
       </ul>
-      <div class="veredicto veredicto-bearish" id="veredicto">
-        <span class="es">⚖️ VEREDICTO DEL DÍA: BAJISTA</span>
-        <span class="en">⚖️ DAY VERDICT: BEARISH</span>
+      <div class="veredicto veredicto-bullish" id="veredicto">
+        <span class="es">⚖️ VEREDICTO DEL DÍA: ALCISTA</span>
+        <span class="en">⚖️ DAY VERDICT: BULLISH</span>
       </div>
-      <div class="subtitle es" style="font-size:11px; margin-top:4px">Sesgo técnico: Death Cross, precio bajo EMAs clave, alineación LEAN BEARISH, RSI 35.05 cayendo, estocástico en sobreventa. Catalizador: FOMC puede invertir la dirección.</div>
-      <div class="subtitle en" style="font-size:11px; margin-top:4px">Technical bias: Death Cross, price below key EMAs, LEAN BEARISH alignment, RSI 35.05 falling, stochastic oversold. Catalyst: FOMC can reverse direction.</div>
+      <div class="subtitle es" style="font-size:11px; margin-top:4px">Sesgo técnico: Precio rompió VAH 4,112, MACD alcista, OBV en acumulación, alineación LEAN BULLISH en 4H/1H/15m. Catalizador: FOMC puede acelerar o revertir.</div>
+      <div class="subtitle en" style="font-size:11px; margin-top:4px">Technical bias: Price broke VAH 4,112, MACD bullish, OBV accumulation, LEAN BULLISH alignment on 4H/1H/15m. Catalyst: FOMC can accelerate or reverse.</div>
     </div>
 
   </div>
@@ -144,7 +144,7 @@
     </div>
     <div class="news-item">
       <div class="news-time"><span class="es">Oct 2026</span><span class="en">Oct 2026</span></div>
-      <div><span class="es"><b>Todos los metales bajan</b> — Oro -1.0%, plata -3.1%, cobre -2.7%, platino -1.5%, paladio -2.6% (futuros COMEX)</span><span class="en"><b>All metals down</b> — Gold -1.0%, silver -3.1%, copper -2.7%, platinum -1.5%, palladium -2.6% (COMEX futures)</span></div>
+      <div><span class="es"><b>Todos los metales suben</b> — Oro +1.5%, plata +0.8%, platino +1.6%, paladio +1.9% (futuros COMEX)</span><span class="en"><b>All metals up</b> — Gold +1.5%, silver +0.8%, platinum +1.6%, palladium +1.9% (COMEX futures)</span></div>
     </div>
     <div class="news-item">
       <div class="news-time"><span class="es">29 Oct 2025</span><span class="en">Oct 29 2025</span></div>
@@ -160,14 +160,14 @@
     <h3><span class="es">📊 Sentimiento y Opiniones de Mercado</span><span class="en">📊 Market Sentiment and Opinions</span></h3>
     <table class="table">
         <tr><th>Fuente</th><th>Sesgo</th><th>Opinión clave</th></tr>
-        <tr><td>TradingView MCP (técnico)</td><td class="bear">🔴 SELL</td><td>Death Cross confirmado, precio bajo EMA20/50/200, alineación LEAN BEARISH</td></tr>
-        <tr><td>Marketaux (noticias)</td><td class="neutral">⚪ Neutral</td><td>3 artículos analizados: 1 bullish / 1 bearish / 1 neutral — sin sesgo claro</td></tr>
-        <tr><td>Metales (COMEX snapshot)</td><td class="bear">🔴 Bajista</td><td>Oro, plata, cobre, platino y paladio todos en negativo — debilidad generalizada</td></tr>
-        <tr><td>DXY (dólar)</td><td class="bear">🔴 Bajista para oro</td><td>Dólar fortaleciéndose = presión sobre el oro</td></tr>
+        <tr><td>TradingView MCP (técnico)</td><td class="bull">🟢 LEAN BULLISH</td><td>Precio rompió VAH 4,112, MACD alcista, RSI 52.1 subiendo, OBV en acumulación</td></tr>
+        <tr><td>Marketaux (noticias)</td><td class="neutral">⚪ Neutral</td><td>3 artículos analizados: sin sesgo claro dominante</td></tr>
+        <tr><td>Metales (COMEX snapshot)</td><td class="bull">🟢 Alcista</td><td>Oro, plata, platino y paladio todos en positivo — fuerza generalizada</td></tr>
+        <tr><td>DXY (dólar)</td><td class="bear">🔴 Bajista para oro (si sube)</td><td>Si el dólar se fortalece tras FOMC halcón, presión bajista sobre oro</td></tr>
         <tr><td>Bancos centrales</td><td class="bull">🟢 Alcista (LP)</td><td>Compras netas sostenidas 2025 — piso estructural para el oro</td></tr>
         <tr><td>Institucional</td><td class="neutral">⚪ Mixto</td><td>Opiniones divididas pre-FOMC: algunos esperan recorte, otros pausan</td></tr>
     </table>
-    <div class="footer">Sentimiento agregado: Neutral con sesgo técnico bajista a corto plazo, alcista estructural a largo plazo</div>
+    <div class="footer">Sentimiento agregado: Neutral con sesgo técnico alcista a corto plazo, alcista estructural a largo plazo</div>
   </div>
 </div>
 
@@ -175,31 +175,31 @@
 <div class="tab-panel" id="tab2">
 
   <div class="card">
-    <h3><span class="es">📊 Análisis Técnico Completo (XAUUSD) — Martes 3 Nov 2026 · 06:54 UTC</span><span class="en">📊 Complete Technical Analysis (XAUUSD) — Tue Nov 3 2026 · 06:54 UTC</span></h3>
+    <h3><span class="es">📊 Análisis Técnico Completo (XAUUSD) — Martes 3 Nov 2026 · TradingView MCP</span><span class="en">📊 Complete Technical Analysis (XAUUSD) — Tue Nov 3 2026 · TradingView MCP</span></h3>
     <div class="grid2">
         <div class="card">
             <h3><span class="es">🎯 Soporte y Resistencia (Pivots Clásicos — Auction Theory)</span><span class="en">🎯 Support & Resistance (Classic Pivots — Auction Theory)</span></h3>
             <table class="table">
                 <tr><th>Tipo</th><th>Nivel</th><th>Distancia</th><th>Significado AMT</th></tr>
-                <tr><td>🔴 R3</td><td><b>4,706.22</b></td><td>+20.2%</td><td>Exceso alcista histórico</td></tr>
-                <tr><td>🔴 R2</td><td><b>4,348.63</b></td><td>+11.1%</td><td>Resistencia fuerte (VAH semanal anterior)</td></tr>
-                <tr><td>🔴 R1</td><td><b>4,111.81</b></td><td>+5.0%</td><td><b>VAH actual</b> — Techo Value Area (70%)</td></tr>
-                <tr><td>🟡 Pivot</td><td><b>3,991.03</b></td><td>+2.0%</td><td><b>POC</b> — Precio justo / imán</td></tr>
-                <tr><td>🟢 PRECIO</td><td><b>3,914.62</b></td><td>—</td><td>Dentro VA, mitad inferior, cerca S1</td></tr>
-                <tr><td>🟢 S1</td><td><b>3,754.22</b></td><td>-4.1%</td><td><b>VAL actual</b> — Suelo Value Area</td></tr>
-                <tr><td>🟢 S2</td><td><b>3,633.44</b></td><td>-7.2%</td><td>Soporte previo / PDL semanal</td></tr>
-                <tr><td>🟢 S3</td><td><b>3,275.84</b></td><td>-16.3%</td><td>Exceso bajista</td></tr>
+                <tr><td>🔴 R3</td><td><b>4,706.22</b></td><td>+14.1%</td><td>Exceso alcista histórico</td></tr>
+                <tr><td>🔴 R2</td><td><b>4,348.63</b></td><td>+5.4%</td><td>Resistencia fuerte (VAH semanal anterior)</td></tr>
+                <tr><td>🔴 R1</td><td><b>4,111.81</b></td><td>-0.3%</td><td><b>VAH actual</b> — Techo Value Area (70%) — precio ya lo probó</td></tr>
+                <tr><td>🟡 Pivot</td><td><b>3,991.03</b></td><td>-3.2%</td><td><b>POC</b> — Precio justo / imán</td></tr>
+                <tr><td>🟢 PRECIO</td><td><b>4,124.58</b></td><td>—</td><td>Por encima de VAH, extensión de rango</td></tr>
+                <tr><td>🟢 S1</td><td><b>3,754.22</b></td><td>-9.0%</td><td><b>VAL actual</b> — Suelo Value Area</td></tr>
+                <tr><td>🟢 S2</td><td><b>3,633.44</b></td><td>-11.9%</td><td>Soporte previo / PDL semanal</td></tr>
+                <tr><td>🟢 S3</td><td><b>3,275.84</b></td><td>-20.6%</td><td>Exceso bajista</td></tr>
             </table>
-            <div class="footer">Último precio: <b>3,914.62</b> (GC1! 1D) — dentro de VA, mitad inferior, RSI 35.05 (cercano a oversold)</div>
+            <div class="footer">Último precio: <b>4,124.58</b> (GC1! 1D) — por encima de VAH 4,112, RSI 52.12 (neutral/subiendo)</div>
         </div>
 
         <div class="card">
             <h3><span class="es">🕯️ Vela actual (Diario GC1!)</span><span class="en">🕯️ Current Daily Candle (GC1!)</span></h3>
             <table class="table">
                 <tr><th>Apertura</th><th>Máximo</th><th>Mínimo</th><th>Cierre</th><th>Cambio</th></tr>
-                <tr><td>3,946.32</td><td>3,964.43</td><td>3,913.50</td><td>3,914.62</td><td class="bear">-0.80%</td></tr>
+                <tr><td>4,060.17</td><td>4,146.99</td><td>4,057.84</td><td>4,124.58</td><td class="bull">+1.59%</td></tr>
             </table>
-            <div class="footer">Vela bajista, cuerpo 0.62, mecha inferior mínima 2.2% (sin rechazo claro abajo), mecha superior 35.6% (rechazo en techo)</div>
+            <div class="footer">Vela alcista fuerte (cuerpo 0.72), mecha superior 25.1% (rechazo en techo intradía), mecha inferior mínima 2.6%</div>
         </div>
     </div>
 
@@ -207,30 +207,29 @@
         <h3><span class="es">🕯️ Análisis Multi-Timeframe (Alineación de Subastas)</span><span class="en">🕯️ Multi-Timeframe Analysis (Auction Alignment)</span></h3>
         <table class="table">
             <tr><th>TF</th><th>Sesgo</th><th>Estructura</th><th>RSI</th><th>MACD</th><th>EMA Align</th><th>Fuerza</th></tr>
-            <tr><td>1W</td><td class="bull">🟢 Bullish</td><td>Neutral/Ranging</td><td>36.6 ↑</td><td>Bearish</td><td>Price > EMA200 (3,296)</td><td>Débil</td></tr>
-            <tr><td>1D</td><td class="bear">🔴 Bearish</td><td>Bearish</td><td>35.1 ↓</td><td>Bearish</td><td><b>Death Cross</b></td><td><b>Fuerte</b></td></tr>
-            <tr><td>4H</td><td class="bear">🔴 Bearish</td><td>Bearish</td><td>38.6 ↓</td><td>Bullish ⚠️</td><td>Price < EMA20 < EMA50</td><td><b>Fuerte</b></td></tr>
-            <tr><td>1H</td><td class="bear">🔴 Bearish</td><td>Bearish</td><td>39.9 ↓</td><td>Bearish</td><td>Price < EMA20 (3,934)</td><td>Moderada</td></tr>
-            <tr><td>15m</td><td class="neutral">⚪ Neutral</td><td>Neutral/Ranging</td><td>31.3 ↓</td><td>Bullish ⚠️</td><td>Price ~ VWAP</td><td><b>Fuerte</b></td></tr>
+            <tr><td>1W</td><td class="bull">🟢 Bullish</td><td>Neutral/Ranging</td><td>45.2 →</td><td>Bearish</td><td>Price > EMA200 (3,298)</td><td>Débil</td></tr>
+            <tr><td>1D</td><td class="neutral">⚪ Bearish/Pullback</td><td>Neutral/Ranging</td><td>52.1 ↑</td><td>Bullish ⚠️</td><td>Death Cross pero precio > EMA20</td><td>Fuerte</td></tr>
+            <tr><td>4H</td><td class="bull">🟢 Bullish</td><td>Bullish</td><td>70.6 ↓</td><td>Bullish</td><td>Price > EMA20 > EMA50</td><td><b>Fuerte</b></td></tr>
+            <tr><td>1H</td><td class="bull">🟢 Bullish</td><td>Bullish</td><td>69.9 ↑</td><td>Bearish ⚠️</td><td>Price > EMA20 (4,094)</td><td>Muy Fuerte</td></tr>
+            <tr><td>15m</td><td class="neutral">⚪ Neutral</td><td>Neutral/Ranging</td><td>52.2 →</td><td>Bearish ⚠️</td><td>Price ~ VWAP</td><td>Moderada</td></tr>
         </table>
-        <div class="footer">Alineación: <b>LEAN BEARISH</b> (Score: -2/5) — Divergencia: Semanal alcista vs Diario/4H bajistas. Divergencia MACD 4H/15m = posible reversión técnica corta.</div>
+        <div class="footer">Alineación: <b>LEAN BULLISH</b> (Score: +2/5) — 4H/1H alcistas, 1D en pullback, 15m neutral. Semanal da el bias alcista.</div>
     </div>
 
     <div class="card">
         <h3><span class="es">📈 Indicadores Técnicos — Lectura de Subasta</span><span class="en">📈 Technical Indicators — Auction Reading</span></h3>
         <table class="table">
             <tr><th>Indicador</th><th>Valor</th><th>Señal</th><th>Interpretación AMT</th></tr>
-            <tr><td>RSI(14) Diario</td><td>35.05</td><td class="bear">Bearish / Cercano a oversold</td><td>Presión vendedora, acercándose a zona de rechazo en VAL</td></tr>
-            <tr><td>RSI(14) 4H</td><td>38.58</td><td class="neutral">Neutral / Cayendo</td><td>Momentum bajista aún activo en 4H</td></tr>
-            <tr><td>RSI(14) 15m</td><td>31.31</td><td class="bear">Oversold</td><td>Sobreventa en microestructura — posible rebote técnico</td></tr>
-            <tr><td>MACD Diario</td><td>-76.9 / -64.2</td><td class="bear">Bearish</td><td>Momentum bajista confirmado</td></tr>
-            <tr><td>MACD 4H/15m</td><td>Bullish</td><td class="bull">Divergencia</td><td><b>Divergencia alcista</b> = momentum vendedor agotándose, posible reversión</td></tr>
-            <tr><td>Bollinger Bands</td><td>Lower Half</td><td class="neutral">Media-baja</td><td>Precio en mitad inferior de bandas = espacio para rebote hacia POC</td></tr>
-            <tr><td>Death Cross</td><td>EMA50 < EMA200</td><td class="bear">Confirmado</td><td>Cambio estructural a largo plazo</td></tr>
-            <tr><td>ADX</td><td>30.91</td><td class="bear">Tendencia fuerte</td><td>-DI > +DI = tendencia bajista activa</td></tr>
-            <tr><td>ATR(14)</td><td>77.69 (2.0%)</td><td class="neutral">Medio-Alto</td><td>Volatilidad elevada previo a FOMC</td></tr>
-            <tr><td>Stochastic</td><td>K=12.8 / D=15.6</td><td class="bear">Oversold</td><td>Sobreventa confirmada en estocástico</td></tr>
-            <tr><td>OBV</td><td>Distribution</td><td class="bear">Bajista</td><td>Volumen en distribución (venta)</td></tr>
+            <tr><td>RSI(14) Diario</td><td>52.12</td><td class="neutral">Neutral / Subiendo</td><td>Salió de sobreventa, espacio para seguir subiendo</td></tr>
+            <tr><td>RSI(14) 4H</td><td>70.61</td><td class="neutral">Sobrecompra / Cayendo</td><td>4H en sobrecompra, posible pullback corto</td></tr>
+            <tr><td>MACD Diario</td><td>-53.5 / -62.2</td><td class="bull">Bullish Crossover</td><td>Histograma +8.78, momentum vendedor agotándose</td></tr>
+            <tr><td>MACD 4H/1H</td><td>Bullish</td><td class="bull">Alcista</td><td>Confirmación de cambio de tendencia a corto plazo</td></tr>
+            <tr><td>Bollinger Bands</td><td>Upper Half</td><td class="neutral">Media-alta</td><td>Precio en mitad superior, espacio hasta banda superior 4,251</td></tr>
+            <tr><td>Death Cross</td><td>EMA50 < EMA200</td><td class="bear">Confirmado (structural)</td><td>Estructura largo plazo aún bajista, pero precio cruzó EMA20</td></tr>
+            <tr><td>ADX</td><td>28.19</td><td class="neutral">Tendencia fuerte</td><td>-DI y +DI cercanos, posible cambio de dirección</td></tr>
+            <tr><td>ATR(14)</td><td>84.87 (2.1%)</td><td class="neutral">Medio-Alto</td><td>Volatilidad elevada previo a FOMC</td></tr>
+            <tr><td>Stochastic</td><td>K=51.9 / D=33.1</td><td class="neutral">Neutral</td><td>Saliendo de sobreventa</td></tr>
+            <tr><td>OBV</td><td>Accumulation</td><td class="bull">Alcista</td><td>Volumen en acumulación (compra institucional)</td></tr>
         </table>
     </div>
 
@@ -238,12 +237,12 @@
         <h3><span class="es">🌍 Estado del Mercado Macro (Pre-FOMC)</span><span class="en">🌍 Market State (Pre-FOMC)</span></h3>
         <table class="table">
             <tr><th>Indicador</th><th>Valor</th><th>Impacto Oro</th></tr>
-            <tr><td>DXY (Dólar Index)</td><td>Fortaleciéndose</td><td class="bear">Dólar más fuerte = presión sobre oro</td></tr>
-            <tr><td>Oro (GC1!)</td><td>3,930.0 (-1.0%)</td><td class="bear">Caída en futuros COMEX</td></tr>
-            <tr><td>Plata (SI1!)</td><td>49.3 (-3.1%)</td><td class="bear">Corrección fuerte — confirma debilidad metales</td></tr>
-            <tr><td>Cobre (HG1!)</td><td>6.387 (-2.7%)</td><td class="neutral">Industrials débiles</td></tr>
-            <tr><td>Platino (PL1!)</td><td>1,432.2 (-1.5%)</td><td class="bear">Metales preciosos todos a la baja</td></tr>
-            <tr><td>Paladio (PA1!)</td><td>943.0 (-2.6%)</td><td class="bear">Debilidad generalizada</td></tr>
+            <tr><td>DXY (Dólar Index)</td><td>Pendiente FOMC</td><td class="neutral">Si sube dólar = presión oro; si baja = soporte oro</td></tr>
+            <tr><td>Oro (GC1!)</td><td>4,134.8 (+1.5%)</td><td class="bull">Subida en futuros COMEX</td></tr>
+            <tr><td>Plata (SI1!)</td><td>52.71 (+0.8%)</td><td class="bull">Subida junto al oro</td></tr>
+            <tr><td>Cobre (HG1!)</td><td>6.3895 (-0.6%)</td><td class="neutral">Industrials débiles</td></tr>
+            <tr><td>Platino (PL1!)</td><td>1,522.7 (+1.6%)</td><td class="bull">Metales preciosos al alza</td></tr>
+            <tr><td>Paladio (PA1!)</td><td>1,022.0 (+1.9%)</td><td class="bull">Fuerza en metales</td></tr>
             <tr><td>VIX</td><td>~17</td><td class="neutral">Volatilidad contenida</td></tr>
             <tr><td>Central Banks</td><td>Compradores netos 2025</td><td class="bull">Piso estructural (Polonia, China, India, Brasil)</td></tr>
             <tr><td>Fed Policy</td><td>FOMC HOY</td><td class="neutral">Catalizador principal del día</td></tr>
@@ -268,53 +267,50 @@
 <pre>
 Perfil Semanal (GC1! COMEX - datos TradingView MCP 3 Nov 2026):
 
-   R2   4,348.63 ────────────────────────────── ← Resistencia histórica / VAH previo
+   R2   4,348.63 ────────────────────────────── ← Resistencia histórica / objetivo extensión
    R1   4,111.81 ──┐ ← VAH (Value Area High 70%)
-                  │   ← Rechazo aquí = posible VENTA → target POC
+                  │   ← Precio ya rompió VAH con aceptación → extensión
    POC  3,991.03 ←─┘ ← "Precio justo" (Point of Control) / Imán
                   │
-   PRECIO 3,914.62 ←─ **MITAD INFERIOR DEL VA** — cerca de VAL/S1
+   PRECIO 4,124.58 ←─ **POR ENCIMA DE VAH** — extensión de rango alcista
                   │
-   VAL  3,754.22 ─── ← Suelo Value Area (coincide S1)
-                  │   ← Rechazo + mecha = posible COMPRA → target POC
-   S2   3,633.44 ────────────────────────────── ← Soporte previo
+   VAL  3,754.22 ─── ← Suelo Value Area (soporte si hay pullback)
+   S2   3,633.44 ────────────────────────────── ← Soporte previo / PDL semanal
    S3   3,275.84 ────────────────────────────── ← Exceso bajista
 
-   Sesión actual: High 3,964.43 / Low 3,913.50
+   Sesión actual: High 4,146.99 / Low 4,057.84
 
 LECTURA AMT:
-• Estado: BALANCE — precio dentro de VA (3,754-4,112), mitad inferior (cerca VAL/S1)
-• Regla 80%: CUMPLIDA (>80% tiempo en VA) → rotación esperada hacia VAH
-• Exceso detectado: RSI diario 35.05 acercándose a oversold, estocástico K=12.8 en sobreventa
-• Sesgo intradía: Bajista técnico (Death Cross) pero MACD 4H/15m alcista = divergencia
-• Divergencia clave: MACD 4H/15m alcista vs precio bajista = agotamiento vendedor
-• Bollinger: precio en Lower Half = espacio para rebote hacia POC
+• Estado: EXTENSIÓN ALCISTA — precio rompió VAH y busca siguiente balance alto
+• Regla 80%: precio salió del VA hacia arriba → posible extensión o reversión a VAL si falla aceptación
+• Exceso alcista detectado: precio en Upper Half Bollinger, RSI 4H 70.6 (sobrecompra)
+• Sesgo intradía: Alcista (LEAN BULLISH +2/5), 4H/1H muy fuertes
+• Divergencia: 1D aún muestra Death Cross pero precio > EMA20 y MACD alcista
 
 ESTRATEGIA AMT (con FOMC hoy):
-├─ Si llega a VAL (3,754) con rechazo/mecha → COMPRA → target POC 3,991 → VAH 4,112
-├─ Si llega a VAH (4,112) y rechaza → VENTA → target POC 3,991 → VAL 3,754
-├─ Si precio sostiene cerca S1 y FOMC es dovish → REBOTE hacia POC/VAH
-├─ Si precio rompe VAL con aceptación (2 velas 15m < 3,754) → NO fade, target 3,633 → 3,276
-└─ Si FOMC es halcón y rompe VAH hacia abajo con aceptación → continuación bajista
+├─ Si precio se mantiene > VAH 4,112 con aceptación → COMPRA/MANTENER → target R2 4,349 → R3 4,706
+├─ Si precio hace pullback a POC 3,991 y rebota → COMPRA → target VAH 4,112 → R2 4,349
+├─ Si precio pierde POC 3,991 con aceptación (2 velas 15m < 3,991) → VENTA → target VAL 3,754 → S2 3,633
+└─ Si FOMC es halcón y rompe VAH hacia abajo con aceptación → continuación bajista hacia VAL
 
 CONFLUENCIA MACRO + TÉCNICA:
-• Corto plazo (hoy): BAJISTA — Death Cross, precio bajo EMAs, dólar fortaleciéndose, todos los metales bajos
-• Post-FOMC (días): Si dovish → rebote hacia POC 3,991 / VAH 4,112; si hawkish → prueba VAL 3,754 → S2 3,633
-• Medio plazo (1-4 sem): Construcción base 3,600-3,900 → impulso según FOMC
+• Corto plazo (hoy): ALCISTA — precio rompió VAH, MACD alcista, OBV acumulación, metales al alza
+• Post-FOMC (días): Si dovish → continuación hacia 4,349; si hawkish → reversión hacia POC 3,991 / VAL 3,754
+• Medio plazo (1-4 sem): Construcción base 3,900-4,100 → rompimiento hacia 4,349+ si FOMC dovish
 • Largo plazo (meses): Alcista estructural (CBs buying, de-dollarización, Fed pivot)
 </pre>
         </div>
         <ul style="margin-top:10px">
-            <li><b>Balance dominante:</b> Estamos en rango — la jugada base es comprar en VAL/S1 (3,754) y vender en VAH/R1 (4,112)</li>
-            <li><b>POC = 3,991:</b> el precio "justo" de la semana — actúa como imán por debajo y por encima</li>
-            <li><b>Exceso bajista:</b> RSI diario 35.05, estocástico K=12.8 en sobreventa = subasta extendida hacia abajo = rechazo probable en VAL</li>
-            <li><b>Divergencia clave:</b> MACD 4H/15m alcista vs precio bajista = agotamiento vendedor</li>
-            <li><b>FOMC es el factor X:</b> Dólar fuerte + Fed halcón = oro a VAL/PDL; Dólar débil + Fed paloma = oro a POC/VAH</li>
-            <li><b>Plan de Sesión:</b> Esperar rejection en VAL/S1 (no fuzzear en POC). Stop < 3,720. Target 1: 3,991 (POC). Target 2: 4,112 (VAH).</li>
+            <li><b>Balance dominante:</b> Estamos en extensión alcista tras romper VAH — la jugada base es comprar pullbacks a POC 3,991 y vender en R2 4,349</li>
+            <li><b>POC = 3,991:</b> el precio "justo" de la semana — actúa como imán y soporte clave si hay pullback</li>
+            <li><b>Extensión alcista:</b> Precio por encima de VAH 4,112 = subasta busca balance más alto</li>
+            <li><b>Divergencia clave:</b> MACD alcista vs Death Cross estructural = posible cambio de tendencia o trampa alcista</li>
+            <li><b>FOMC es el factor X:</b> Dólar débil + Fed paloma = oro a R2 4,349; Dólar fuerte + Fed halcón = oro a POC 3,991 / VAL 3,754</li>
+            <li><b>Plan de Sesión:</b> Esperar pullback a POC 3,991 para comprar con stop < 3,950. Target 1: 4,112 (VAH). Target 2: 4,349 (R2).</li>
         </ul>
     </div>
 
-    <div class="footer">Datos: TradingView MCP (GC1! COMEX 1D/4H/1H/15m) · Yahoo Finance · Reuters · Bloomberg · WGC | Actualizado: 3 Nov 2026 ~06:54 UTC</div>
+    <div class="footer">Datos: TradingView MCP (GC1! COMEX 1D/4H/1H/15m) · Yahoo Finance · Reuters · Bloomberg · WGC | Actualizado: 3 Nov 2026 ~ TradingView MCP</div>
 
 </div>
 
@@ -380,26 +376,26 @@ const chart = LightweightCharts.createChart(document.getElementById('chart'), {
 const cs = chart.addCandlestickSeries({
   upColor:'#26a69a', downColor:'#f23645', borderVisible:false,
   wickUpColor:'#26a69a', wickDownColor:'#f23645',
-  autoscaleInfoProvider: () => ({ priceRange: { minValue: 3600, maxValue: 4400 } })
+  autoscaleInfoProvider: () => ({ priceRange: { minValue: 3600, maxValue: 4500 } })
 });
 cs.setData([
-  { time:1793757600, open:3946.32, high:3964.43, low:3913.50, close:3914.62 }
+  { time:1793757600, open:4060.17, high:4146.99, low:4057.84, close:4124.58 }
 ]);
 
 // Zonas AMT (niveles actuales GC1! COMEX 3 Nov 2026)
 [
-  { price:4348.63, color:'rgba(242,54,69,0.3)', w:1, style:LightweightCharts.LineStyle.Dashed, title:'R2 / Exceso histórico' },
+  { price:4348.63, color:'rgba(242,54,69,0.3)', w:1, style:LightweightCharts.LineStyle.Dashed, title:'R2 / Objetivo extensión' },
   { price:4111.81, color:'rgba(242,54,69,0.6)', w:2, style:LightweightCharts.LineStyle.Dashed, title:'VAH (Value Area High)' },
   { price:3991.03, color:'#ff9800', w:2, style:LightweightCharts.LineStyle.Solid,  title:'POC (Point of Control)' },
   { price:3754.22, color:'rgba(38,166,154,0.6)', w:2, style:LightweightCharts.LineStyle.Dashed, title:'VAL (Value Area Low)' },
   { price:3633.44, color:'rgba(38,166,154,0.4)', w:1, style:LightweightCharts.LineStyle.Dotted, title:'S2 / Soporte previo' },
   { price:3275.84, color:'rgba(41,98,255,0.6)', w:1, style:LightweightCharts.LineStyle.Dashed, title:'S3 / Exceso bajista' },
-  { price:3964.43, color:'#868993', w:1, style:LightweightCharts.LineStyle.Dotted, title:'High sesión' },
-  { price:3913.50, color:'#868993', w:1, style:LightweightCharts.LineStyle.Dotted, title:'Low sesión' },
+  { price:4146.99, color:'#868993', w:1, style:LightweightCharts.LineStyle.Dotted, title:'High sesión' },
+  { price:4057.84, color:'#868993', w:1, style:LightweightCharts.LineStyle.Dotted, title:'Low sesión' },
 ].forEach(z => cs.createPriceLine({ price:z.price, color:z.color, lineWidth:z.w, lineStyle:z.style, axisLabelVisible:true, title:z.title, lineVisible:true }))
 
 cs.setMarkers([
-  { time:1793757600, position:'belowBar', color:'#ff9800', shape:'circle',   text:'Último 3,914.6' }
+  { time:1793757600, position:'aboveBar', color:'#26a69a', shape:'circle',   text:'Último 4,124.6' }
 ]);
 
 chart.timeScale().setVisibleLogicalRange({ from: 0, to: 1 });
